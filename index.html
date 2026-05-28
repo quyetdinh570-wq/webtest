@@ -7,6 +7,8 @@
 
 <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;600;700;800&display=swap" rel="stylesheet">
 
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 <style>
 
 *{
@@ -220,6 +222,12 @@ color:white;
 font-size:28px;
 font-weight:800;
 cursor:pointer;
+cursor:pointer;
+transition:.3s;
+}
+
+.login:hover{
+transform:scale(1.01);
 }
 
 .packages{
@@ -579,7 +587,14 @@ function loginGame(){
 const uid=document.getElementById('uid').value;
 
 if(uid===''){
-alert('Vui lòng nhập ID game');
+
+Swal.fire({
+icon:'warning',
+title:'Chưa nhập ID game',
+text:'Vui lòng nhập ID game để tiếp tục',
+confirmButtonColor:'#f59e0b'
+});
+
 return;
 }
 
@@ -623,6 +638,13 @@ NẠP NGAY
 });
 
 document.getElementById('packages').innerHTML=html;
+
+Swal.fire({
+icon:'success',
+title:'Đăng nhập thành công',
+text:'Vui lòng chọn gói nạp',
+confirmButtonColor:'#22c55e'
+});
 
 }
 
