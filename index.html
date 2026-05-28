@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>NapGame247</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;600;700;800&display=swap" rel="stylesheet">
@@ -16,341 +16,190 @@ font-family:'Be Vietnam Pro',sans-serif;
 }
 
 body{
-background:#f3f3f3;
+background:#efefef;
 }
 
 header{
-background:linear-gradient(90deg,#7b1fa2,#ec407a);
-padding:22px 30px;
+background:linear-gradient(90deg,#6a11cb,#ff3c83);
+padding:20px 40px;
 display:flex;
 justify-content:space-between;
 align-items:center;
-color:white;
+color:#fff;
+font-weight:800;
+font-size:24px;
 position:sticky;
 top:0;
-z-index:100;
-}
-
-.logo{
-font-size:42px;
-font-weight:800;
+z-index:999;
 }
 
 .menu{
 display:flex;
 gap:30px;
-align-items:center;
+font-weight:700;
+font-size:18px;
 }
 
 .menu a{
-color:white;
+color:#fff;
 text-decoration:none;
-font-size:22px;
-font-weight:700;
-transition:.3s;
-}
-
-.menu a:hover{
-opacity:.8;
 }
 
 .hero{
-background:linear-gradient(135deg,#8e24aa,#ff4081);
-padding:90px 20px;
+background:linear-gradient(180deg,#8b1db1,#ff3f86);
+padding:70px 20px;
 text-align:center;
-color:white;
+color:#fff;
 }
 
 .hero h1{
-font-size:80px;
+font-size:70px;
 font-weight:800;
 margin-bottom:20px;
 }
 
 .hero p{
-font-size:32px;
+font-size:30px;
 font-weight:600;
 }
 
-.container{
-max-width:1300px;
-margin:auto;
-padding:40px 20px;
+.banner{
+width:100%;
+overflow:hidden;
+background:#fff;
 }
 
-.grid{
+.banner img{
+width:100%;
+display:block;
+}
+
+.info-box{
+display:flex;
+justify-content:center;
+gap:30px;
+margin-top:-40px;
+position:relative;
+z-index:5;
+flex-wrap:wrap;
+}
+
+.info-item{
+background:#ffe600;
+padding:20px 35px;
+font-size:32px;
+font-weight:800;
+border-radius:12px;
+box-shadow:0 10px 20px rgba(0,0,0,.2);
+}
+
+.games{
+padding:50px 20px;
+max-width:1400px;
+margin:auto;
+}
+
+.games h2{
+font-size:45px;
+margin-bottom:40px;
+font-weight:800;
+text-align:center;
+}
+
+.game-list{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(400px,1fr));
+grid-template-columns:repeat(auto-fit,minmax(420px,1fr));
 gap:35px;
 }
 
-.card{
-background:white;
-border-radius:35px;
+.game-card{
+background:#fff;
+border-radius:25px;
 overflow:hidden;
+box-shadow:0 10px 25px rgba(0,0,0,.12);
 cursor:pointer;
 transition:.3s;
-box-shadow:0 10px 30px rgba(0,0,0,.15);
 }
 
-.card:hover{
+.game-card:hover{
 transform:translateY(-8px) scale(1.02);
 }
 
-.card img{
+.game-card img{
 width:100%;
-height:320px;
+height:220px;
 object-fit:cover;
+display:block;
 }
 
-.card h2{
-padding:28px;
-text-align:center;
-font-size:54px;
+.game-name{
+padding:25px;
+font-size:42px;
 font-weight:800;
+text-align:center;
 }
 
 .ff{
-color:#ff5722;
+color:#ff5b22;
 }
 
 .lq{
-color:#1976d2;
-}
-
-.page{
-display:none;
-background:white;
-border-radius:35px;
-padding:35px;
-box-shadow:0 10px 30px rgba(0,0,0,.12);
-}
-
-.active{
-display:block;
-}
-
-.back{
-background:black;
-color:white;
-border:none;
-padding:15px 30px;
-border-radius:18px;
-font-size:24px;
-font-weight:700;
-cursor:pointer;
-}
-
-.title{
-text-align:center;
-font-size:70px;
-font-weight:800;
-margin:30px 0;
-}
-
-.input{
-width:100%;
-padding:22px;
-border-radius:20px;
-border:1px solid #ccc;
-font-size:28px;
-}
-
-.login{
-width:100%;
-margin-top:20px;
-padding:22px;
-border:none;
-border-radius:20px;
-background:linear-gradient(90deg,#ff5722,#ff9800);
-color:white;
-font-size:32px;
-font-weight:800;
-cursor:pointer;
-}
-
-.packages{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
-gap:25px;
-margin-top:40px;
-}
-
-.package{
-background:#fafafa;
-padding:25px;
-border-radius:30px;
-text-align:center;
-transition:.3s;
-cursor:pointer;
-box-shadow:0 5px 15px rgba(0,0,0,.08);
-}
-
-.package:hover{
-transform:translateY(-5px);
-background:#fff7ef;
-}
-
-.package h3{
-font-size:45px;
-margin-bottom:15px;
-}
-
-.amount{
-display:flex;
-justify-content:center;
-align-items:center;
-gap:10px;
-font-size:45px;
-font-weight:800;
-color:#00acc1;
-}
-
-.amount img{
-width:40px;
-height:40px;
-}
-
-.buy{
-margin-top:18px;
-background:#ff5722;
-color:white;
-border:none;
-padding:14px 24px;
-border-radius:16px;
-font-size:26px;
-font-weight:700;
-cursor:pointer;
-}
-
-.paybox{
-margin-top:50px;
-background:#fafafa;
-padding:40px;
-border-radius:35px;
-display:none;
-text-align:center;
-}
-
-.paybox.active{
-display:block;
-}
-
-.paybox h2{
-font-size:60px;
-margin-bottom:25px;
-}
-
-.qr{
-width:350px;
-max-width:100%;
-border-radius:30px;
-box-shadow:0 10px 25px rgba(0,0,0,.2);
-}
-
-.info{
-margin-top:25px;
-font-size:30px;
-font-weight:700;
-line-height:55px;
-}
-
-.note{
-margin-top:25px;
-background:#fff3cd;
-padding:18px;
-border-radius:16px;
-font-size:24px;
-font-weight:700;
-color:#7a5200;
+color:#287ae6;
 }
 
 .telegram{
-margin-top:40px;
-text-align:center;
-}
-
-.telegram a{
-display:inline-block;
-background:#229ED9;
-color:white;
-padding:18px 35px;
-border-radius:18px;
-font-size:28px;
-font-weight:800;
+position:fixed;
+left:20px;
+bottom:20px;
+background:#fff;
+padding:15px 20px;
+border-radius:20px;
+box-shadow:0 10px 25px rgba(0,0,0,.15);
+display:flex;
+align-items:center;
+gap:12px;
+z-index:999;
 text-decoration:none;
-transition:.3s;
+color:#000;
+font-weight:700;
 }
 
-.telegram a:hover{
-transform:scale(1.05);
+.telegram img{
+width:45px;
 }
 
 footer{
 margin-top:60px;
-background:#7b1fa2;
-padding:30px;
+background:#7d1fa8;
+padding:25px;
 text-align:center;
-color:white;
-font-size:28px;
+color:#fff;
+font-size:24px;
 font-weight:700;
 }
 
-@media(max-width:700px){
-
-.logo{
-font-size:24px;
-}
-
-.menu{
-gap:12px;
-}
-
-.menu a{
-font-size:14px;
-}
+@media(max-width:768px){
 
 .hero h1{
 font-size:45px;
 }
 
 .hero p{
-font-size:22px;
-}
-
-.card h2{
-font-size:34px;
-}
-
-.title{
-font-size:42px;
-}
-
-.input,
-.login{
-font-size:22px;
-}
-
-.package h3{
-font-size:32px;
-}
-
-.amount{
-font-size:32px;
-}
-
-.buy{
-font-size:22px;
-}
-
-.info{
-font-size:20px;
-line-height:40px;
-}
-
-.telegram a{
 font-size:20px;
 }
+
+.game-name{
+font-size:28px;
+}
+
+.info-item{
+font-size:22px;
+}
+
+.game-list{
+grid-template-columns:1fr;
+}
+
 }
 </style>
 </head>
@@ -358,216 +207,61 @@ font-size:20px;
 <body>
 
 <header>
-<div class="logo">NAPGAME247</div>
+<div>NAPGAME247</div>
 
 <div class="menu">
 <a href="#">HƯỚNG DẪN</a>
 <a href="#">KHUYẾN MÃI</a>
 <a href="#">BẢO HÀNH</a>
-
-<a href="https://t.me/ketamin28386" target="_blank">
-CSKH 24/7
-</a>
+<a href="https://t.me/ketamin28386" target="_blank">CSKH 24/7</a>
 </div>
 </header>
 
-<div class="hero">
+<section class="hero">
 <h1>SHOP NẠP GAME GIÁ RẺ</h1>
 <p>Nhanh chóng • Uy tín • Hỗ trợ 24/7</p>
+</section>
+
+<div class="banner">
+<img src="https://naplau.com/master-images/slider/slider1.jpg">
 </div>
 
-<div class="container">
-
-<div id="home" class="grid">
-
-<div class="card" onclick="openGame('ff')">
-<img src="https://naplau.com/master-images/game/logo_ff.png">
-<h2 class="ff">Free Fire</h2>
+<div class="info-box">
+<div class="info-item">Bảo hành</div>
+<div class="info-item">Tiện lợi</div>
+<div class="info-item">Hỗ trợ 24/7</div>
 </div>
 
-<div class="card" onclick="openGame('lq')">
-<img src="https://naplau.com/master-images/game/logo_lienquan.png">
-<h2 class="lq">Liên Quân Mobile</h2>
+<section class="games">
+
+<h2>CHỌN GAME NẠP</h2>
+
+<div class="game-list">
+
+<div class="game-card" onclick="location.href='ff.html'">
+<img src="https://naplau.com/master-images/game/bg_ff.jpg">
+<div class="game-name ff">Free Fire</div>
+</div>
+
+<div class="game-card" onclick="location.href='lq.html'">
+<img src="https://naplau.com/master-images/game/bg_lienquan.jpg">
+<div class="game-name lq">Liên Quân Mobile</div>
 </div>
 
 </div>
+</section>
 
-<div id="page" class="page">
-
-<button class="back" onclick="goHome()">
-← Quay lại
-</button>
-
-<h1 id="title" class="title"></h1>
-
-<input
-id="uid"
-class="input"
-placeholder="Vui lòng nhập ID game">
-
-<button class="login" onclick="loginGame()">
-ĐĂNG NHẬP
-</button>
-
-<div id="packages" class="packages"></div>
-
-<div class="telegram">
-<a href="https://t.me/ketamin28386" target="_blank">
-HỖ TRỢ TELEGRAM
+<a class="telegram" href="https://t.me/ketamin28386" target="_blank">
+<img src="https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg">
+<div>
+<div>Hỗ trợ Telegram</div>
+<div>@ketamin28386</div>
+</div>
 </a>
-</div>
-
-<div id="paybox" class="paybox">
-
-<h2>THANH TOÁN QR</h2>
-
-<img id="qr" class="qr">
-
-<div class="info">
-<div>Ngân hàng: VIB</div>
-<div>Số tài khoản: 090958147</div>
-<div>Chủ tài khoản: CAM MINH SON</div>
-<div>Nội dung CK: <span id="code"></span></div>
-</div>
-
-<div class="note">
-Sau khi chuyển khoản thành công vui lòng chờ admin duyệt giao dịch.
-</div>
-
-</div>
-
-</div>
-
-</div>
 
 <footer>
 Copyright © 2026 NapGame247
 </footer>
-
-<script>
-
-let game='';
-
-const ff=[
-['50000','14.150'],
-['100000','28.300'],
-['200000','56.600'],
-['500000','169.800']
-];
-
-const lq=[
-['50000','1.100'],
-['100000','2.600'],
-['200000','6.000'],
-['500000','20.000']
-];
-
-function openGame(g){
-
-game=g;
-
-document.getElementById('home').style.display='none';
-
-document.getElementById('page').classList.add('active');
-
-document.getElementById('packages').innerHTML='';
-
-document.getElementById('paybox').classList.remove('active');
-
-document.getElementById('uid').value='';
-
-document.getElementById('title').innerHTML=
-g==='ff'
-?
-'NẠP KIM CƯƠNG FREE FIRE'
-:
-'NẠP QUÂN HUY LIÊN QUÂN';
-
-}
-
-function goHome(){
-
-document.getElementById('home').style.display='grid';
-
-document.getElementById('page').classList.remove('active');
-
-}
-
-function loginGame(){
-
-const uid=document.getElementById('uid').value;
-
-if(uid===''){
-alert('Vui lòng nhập ID game');
-return;
-}
-
-alert('Đăng nhập thành công');
-
-const data=game==='ff'?ff:lq;
-
-const icon=
-game==='ff'
-?
-'https://cdn-gop.garenanow.com/gop/app/0000/100/067/point.png'
-:
-'https://cdn-gop.garenanow.com/gop/app/0000/100/054/point.png';
-
-let html='';
-
-data.forEach(item=>{
-
-html+=`
-
-<div class="package" onclick="pay('${item[0]}')">
-
-<h3>
-${Number(item[0]).toLocaleString('vi-VN')}đ
-</h3>
-
-<div class="amount">
-
-<img src="${icon}">
-
-${item[1]}
-
-</div>
-
-<button class="buy">
-NẠP NGAY
-</button>
-
-</div>
-
-`;
-
-});
-
-document.getElementById('packages').innerHTML=html;
-
-}
-
-function pay(amount){
-
-const code='NAP'+Math.floor(Math.random()*999999);
-
-document.getElementById('code').innerHTML=code;
-
-const qr=
-`https://img.vietqr.io/image/VIB-090958147-compact2.png?amount=${amount}&addInfo=${code}&accountName=CAM%20MINH%20SON`;
-
-document.getElementById('qr').src=qr;
-
-document.getElementById('paybox').classList.add('active');
-
-window.scrollTo({
-top:document.body.scrollHeight,
-behavior:'smooth'
-});
-
-}
-
-</script>
 
 </body>
 </html>
