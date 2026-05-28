@@ -1,255 +1,252 @@
-export default function GamingTopupShop() {
-  const ffPackages = [
-    { price: 50000, diamonds: '14.150', label: '50.000đ' },
-    { price: 100000, diamonds: '28.300', label: '100.000đ' },
-    { price: 200000, diamonds: '56.600', label: '200.000đ' },
-    { price: 500000, diamonds: '169.800', label: '500.000đ' },
-  ];
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NapGame247</title>
 
-  const lqPackages = [
-    { price: 50000, qh: '1.100', label: '50.000đ' },
-    { price: 100000, qh: '2.600', label: '100.000đ' },
-    { price: 200000, qh: '6.000', label: '200.000đ' },
-    { price: 500000, qh: '20.000', label: '500.000đ' },
-  ];
-
-  const [page, setPage] = React.useState('home');
-  const [uid, setUid] = React.useState('');
-  const [logged, setLogged] = React.useState(false);
-  const [selectedPackage, setSelectedPackage] = React.useState(null);
-  const [paymentCode, setPaymentCode] = React.useState('');
-
-  const generateRandomCode = () => {
-    return 'NAP' + Math.floor(Math.random() * 999999);
-  };
-
-  const loginGame = () => {
-    if (!uid) {
-      alert('Vui lòng nhập ID game');
-      return;
-    }
-
-    setLogged(true);
-    alert('Đăng nhập thành công!');
-  };
-
-  const createQR = (amount) => {
-    const code = generateRandomCode();
-    setPaymentCode(code);
-
-    const bank = 'VIB';
-    const account = '090958147';
-    const name = 'CAM MINH SON';
-
-    const qr = `https://img.vietqr.io/image/${bank}-${account}-compact2.png?amount=${amount}&addInfo=${code}&accountName=${encodeURIComponent(name)}`;
-
-    window.open(qr, '_blank');
-  };
-
-  const renderPackages = (packages, type) => {
-    return (
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-6">
-        {packages.map((item, index) => (
-          <div
-            key={index}
-            onClick={() => setSelectedPackage(item)}
-            className={`border-2 rounded-xl p-4 cursor-pointer transition hover:scale-105 ${selectedPackage === item ? 'border-red-500 bg-red-100 text-black' : 'border-gray-300 bg-white text-black'}`}
-          >
-            <div className="font-bold text-2xl">{item.label}</div>
-
-            <div className="mt-2 flex items-center justify-center gap-2 text-xl font-bold text-cyan-500">
-              <img
-                src={
-                  type === 'ff'
-                    ? 'https://cdn-gop.garenanow.com/gop/app/0000/100/067/point.png'
-                    : 'https://cdn-gop.garenanow.com/gop/app/0000/100/054/point.png'
-                }
-                className="w-6 h-6"
-              />
-
-              {type === 'ff' ? item.diamonds : item.qh}
-            </div>
-          </div>
-        ))}
-      </div>
-    );
-  };
-
-  return (
-    <div className="min-h-screen bg-gray-100">
-      <header className="bg-white border-b shadow-md p-4 flex justify-between items-center">
-        <h1 className="text-4xl font-black text-orange-500">
-          NapGame247
-        </h1>
-
-        <div className="flex gap-6 font-bold">
-          <button>HƯỚNG DẪN</button>
-          <button>BẢO HÀNH</button>
-          <button>KHUYẾN MÃI</button>
-          <button>CSKH</button>
-        </div>
-      </header>
-
-      <div className="bg-gradient-to-r from-purple-700 to-pink-600 p-12 text-center text-white">
-        <h1 className="text-6xl font-black drop-shadow-lg">
-          NẠP GAME SIÊU RẺ
-        </h1>
-
-        <div className="flex justify-center gap-6 mt-8 flex-wrap">
-          <div className="bg-yellow-400 text-black px-8 py-4 rounded-xl font-black text-2xl shadow-xl">
-            Bảo hành
-          </div>
-
-          <div className="bg-yellow-400 text-black px-8 py-4 rounded-xl font-black text-2xl shadow-xl">
-            Tiện lợi
-          </div>
-
-          <div className="bg-yellow-400 text-black px-8 py-4 rounded-xl font-black text-2xl shadow-xl">
-            Hỗ trợ 24/7
-          </div>
-        </div>
-      </div>
-
-      {page === 'home' && (
-        <div className="max-w-6xl mx-auto py-14">
-          <h2 className="text-4xl font-black text-center mb-12">
-            CHỌN GAME NẠP
-          </h2>
-
-          <div className="grid md:grid-cols-2 gap-10">
-            <div
-              onClick={() => {
-                setPage('ff');
-                setLogged(false);
-                setSelectedPackage(null);
-              }}
-              className="bg-white rounded-3xl shadow-2xl p-8 cursor-pointer hover:scale-105 transition"
-            >
-              <img
-                src="https://cdn2.unrealengine.com/freefire-1920x1080-2-1920x1080-4c4f3dfcfc6d.jpg"
-                className="rounded-2xl h-72 w-full object-cover"
-              />
-
-              <h3 className="text-4xl font-black mt-6 text-center text-red-500">
-                Free Fire
-              </h3>
-            </div>
-
-            <div
-              onClick={() => {
-                setPage('lq');
-                setLogged(false);
-                setSelectedPackage(null);
-              }}
-              className="bg-white rounded-3xl shadow-2xl p-8 cursor-pointer hover:scale-105 transition"
-            >
-              <img
-                src="https://cdn.oneesports.vn/cdn-data/sites/4/2023/10/LienQuanMobile.jpg"
-                className="rounded-2xl h-72 w-full object-cover"
-              />
-
-              <h3 className="text-4xl font-black mt-6 text-center text-blue-500">
-                Liên Quân Mobile
-              </h3>
-            </div>
-          </div>
-        </div>
-      )}
-
-      {(page === 'ff' || page === 'lq') && (
-        <div className="max-w-6xl mx-auto py-12 px-4">
-          <button
-            onClick={() => setPage('home')}
-            className="bg-black text-white px-6 py-3 rounded-xl font-bold mb-8"
-          >
-            ← Quay lại
-          </button>
-
-          <div className="bg-white rounded-3xl shadow-2xl p-8">
-            <div className="flex items-center gap-4">
-              <img
-                src={
-                  page === 'ff'
-                    ? 'https://cdn-gop.garenanow.com/gop/app/0000/100/067/point.png'
-                    : 'https://cdn-gop.garenanow.com/gop/app/0000/100/054/point.png'
-                }
-                className="w-16 h-16"
-              />
-
-              <h1 className="text-5xl font-black">
-                {page === 'ff'
-                  ? 'NẠP KIM CƯƠNG FREE FIRE'
-                  : 'NẠP QUÂN HUY LIÊN QUÂN'}
-              </h1>
-            </div>
-
-            {!logged && (
-              <div className="mt-12">
-                <input
-                  type="text"
-                  placeholder="Vui lòng nhập ID game"
-                  value={uid}
-                  onChange={(e) => setUid(e.target.value)}
-                  className="w-full border p-4 rounded-xl text-xl"
-                />
-
-                <button
-                  onClick={loginGame}
-                  className="w-full bg-orange-500 hover:bg-orange-600 text-white font-black text-2xl py-4 rounded-xl mt-6"
-                >
-                  ĐĂNG NHẬP
-                </button>
-              </div>
-            )}
-
-            {logged && (
-              <div className="mt-12">
-                <h2 className="text-3xl font-black mb-6">
-                  Chọn mệnh giá nạp
-                </h2>
-
-                {page === 'ff'
-                  ? renderPackages(ffPackages, 'ff')
-                  : renderPackages(lqPackages, 'lq')}
-
-                {selectedPackage && (
-                  <div className="mt-12 bg-gray-100 p-8 rounded-3xl">
-                    <h2 className="text-3xl font-black mb-6">
-                      Phương thức thanh toán
-                    </h2>
-
-                    <div className="bg-white rounded-2xl p-6 shadow-lg inline-block">
-                      <div className="text-2xl font-bold mb-4">
-                        QR Pay
-                      </div>
-
-                      <button
-                        onClick={() => createQR(selectedPackage.price)}
-                        className="bg-red-500 hover:bg-red-600 text-white px-8 py-4 rounded-xl text-2xl font-black"
-                      >
-                        TẠO MÃ QR
-                      </button>
-                    </div>
-
-                    {paymentCode && (
-                      <div className="mt-8 text-xl font-bold">
-                        <div>Ngân hàng: VIB</div>
-                        <div>STK: 090958147</div>
-                        <div>Chủ tài khoản: CAM MINH SON</div>
-                        <div>Nội dung CK: {paymentCode}</div>
-                      </div>
-                    )}
-                  </div>
-                )}
-              </div>
-            )}
-          </div>
-        </div>
-      )}
-
-      <footer className="bg-orange-500 text-white text-center py-6 font-bold text-xl mt-12">
-        Copyright © 2026 NapGame247
-      </footer>
-    </div>
-  );
+<style>
+body{
+margin:0;
+font-family:Arial;
+background:#f5f5f5;
 }
+
+header{
+background:#7b1fa2;
+padding:20px;
+color:white;
+text-align:center;
+font-size:35px;
+font-weight:bold;
+}
+
+.container{
+padding:30px;
+max-width:1200px;
+margin:auto;
+}
+
+.games{
+display:flex;
+gap:30px;
+justify-content:center;
+flex-wrap:wrap;
+}
+
+.game{
+background:white;
+padding:20px;
+border-radius:20px;
+width:250px;
+text-align:center;
+cursor:pointer;
+transition:0.3s;
+box-shadow:0 0 10px rgba(0,0,0,0.1);
+}
+
+.game:hover{
+transform:scale(1.05);
+}
+
+.game img{
+width:150px;
+border-radius:20px;
+}
+
+.hidden{
+display:none;
+}
+
+input{
+width:100%;
+padding:12px;
+margin-top:10px;
+border-radius:10px;
+border:1px solid #ccc;
+}
+
+button{
+padding:12px 25px;
+border:none;
+background:#ff5722;
+color:white;
+border-radius:10px;
+font-size:18px;
+cursor:pointer;
+margin-top:15px;
+}
+
+.packages{
+display:flex;
+gap:20px;
+flex-wrap:wrap;
+margin-top:20px;
+}
+
+.package{
+background:white;
+padding:20px;
+border-radius:15px;
+width:200px;
+text-align:center;
+cursor:pointer;
+box-shadow:0 0 10px rgba(0,0,0,0.1);
+}
+
+.package:hover{
+background:#ffe0b2;
+}
+
+.qr{
+margin-top:30px;
+background:white;
+padding:20px;
+border-radius:20px;
+}
+
+</style>
+</head>
+
+<body>
+
+<header>NAPGAME247</header>
+
+<div class="container">
+
+<div id="home">
+<h1>CHỌN GAME NẠP</h1>
+
+<div class="games">
+
+<div class="game" onclick="openGame('ff')">
+<img src="https://i.imgur.com/Y8D7G9A.png">
+<h2>Free Fire</h2>
+</div>
+
+<div class="game" onclick="openGame('lq')">
+<img src="https://i.imgur.com/z8l2D3B.png">
+<h2>Liên Quân Mobile</h2>
+</div>
+
+</div>
+</div>
+
+<div id="gamePage" class="hidden">
+
+<button onclick="goHome()">← Quay lại</button>
+
+<h1 id="title"></h1>
+
+<input type="text" id="gameId" placeholder="Nhập ID game">
+
+<button onclick="loginGame()">Đăng nhập</button>
+
+<div id="packages" class="packages hidden"></div>
+
+<div id="payment" class="qr hidden">
+<h2>Thanh toán QR</h2>
+
+<p><b>Ngân hàng:</b> VIB</p>
+<p><b>STK:</b> 090958147</p>
+<p><b>Chủ tài khoản:</b> CAM MINH SON</p>
+
+<p><b>Nội dung:</b> <span id="randomCode"></span></p>
+
+<img id="qrImg" width="300">
+
+</div>
+
+</div>
+
+</div>
+
+<script>
+
+let currentGame = "";
+
+const ffPackages = [
+["50.000đ","14.150"],
+["100.000đ","28.300"],
+["200.000đ","56.600"],
+["500.000đ","169.800"]
+];
+
+const lqPackages = [
+["50.000đ","1.100"],
+["100.000đ","2.600"],
+["200.000đ","6.000"],
+["500.000đ","20.000"]
+];
+
+function openGame(game){
+currentGame = game;
+
+document.getElementById("home").classList.add("hidden");
+document.getElementById("gamePage").classList.remove("hidden");
+
+document.getElementById("packages").classList.add("hidden");
+document.getElementById("payment").classList.add("hidden");
+
+if(game=="ff"){
+document.getElementById("title").innerHTML="NẠP KIM CƯƠNG FREE FIRE";
+}else{
+document.getElementById("title").innerHTML="NẠP QUÂN HUY LIÊN QUÂN";
+}
+}
+
+function goHome(){
+document.getElementById("home").classList.remove("hidden");
+document.getElementById("gamePage").classList.add("hidden");
+}
+
+function loginGame(){
+
+let id = document.getElementById("gameId").value;
+
+if(id==""){
+alert("Vui lòng nhập ID");
+return;
+}
+
+alert("Đăng nhập thành công");
+
+let packages = document.getElementById("packages");
+
+packages.innerHTML="";
+packages.classList.remove("hidden");
+
+let data = currentGame=="ff" ? ffPackages : lqPackages;
+
+data.forEach(p=>{
+
+packages.innerHTML += `
+<div class="package" onclick="pay('${p[0]}')">
+<h2>${p[0]}</h2>
+<h3>${p[1]} ${currentGame=="ff" ? "💎" : "🎫"}</h3>
+</div>
+`;
+
+});
+
+}
+
+function pay(amount){
+
+let code = "NAP" + Math.floor(Math.random()*999999);
+
+document.getElementById("randomCode").innerHTML = code;
+
+let qr =
+`https://img.vietqr.io/image/VIB-090958147-compact2.png?amount=${amount.replace(/\D/g,'')}&addInfo=${code}&accountName=CAM%20MINH%20SON`;
+
+document.getElementById("qrImg").src = qr;
+
+document.getElementById("payment").classList.remove("hidden");
+
+}
+
+</script>
+
+</body>
+</html>
