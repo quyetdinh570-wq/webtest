@@ -1,438 +1,610 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>NAPGAME247</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NAPGAME247</title>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Be+Vietnam+Pro:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;600;700;800&display=swap" rel="stylesheet">
 
-  <style>
+<style>
 
-    *{
-      margin:0;
-      padding:0;
-      box-sizing:border-box;
-    }
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Be Vietnam Pro',sans-serif;
+}
 
-    body{
-      font-family:'Be Vietnam Pro',sans-serif;
-      background:#090311;
-      color:white;
-      overflow-x:hidden;
-    }
+body{
+background:#f3f3f3;
+}
 
-    body::before{
-      content:'';
-      position:fixed;
-      inset:0;
-      background:
-      radial-gradient(circle at top left,#7c3aed55,transparent 35%),
-      radial-gradient(circle at bottom right,#facc1555,transparent 35%);
-      z-index:-1;
-    }
+header{
+background:linear-gradient(90deg,#7b1fa2,#e91e63);
+padding:18px 25px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+color:white;
+position:sticky;
+top:0;
+z-index:100;
+}
 
-    header{
-      padding:20px;
-      border-bottom:1px solid rgba(255,255,255,0.08);
-      background:rgba(0,0,0,0.4);
-      backdrop-filter:blur(10px);
-      position:sticky;
-      top:0;
-      z-index:100;
-    }
+.logo{
+font-size:35px;
+font-weight:800;
+}
 
-    .nav{
-      max-width:1200px;
-      margin:auto;
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-    }
+.menu{
+display:flex;
+gap:25px;
+}
 
-    .logo{
-      font-size:32px;
-      font-family:'Orbitron',sans-serif;
-      font-weight:900;
-      color:#facc15;
-      text-shadow:0 0 15px #facc15;
-    }
+.menu a{
+color:white;
+text-decoration:none;
+font-weight:700;
+font-size:16px;
+}
 
-    .telegram-btn{
-      background:linear-gradient(45deg,#7c3aed,#facc15);
-      color:white;
-      text-decoration:none;
-      padding:12px 22px;
-      border-radius:14px;
-      font-weight:700;
-    }
+.hero{
+background:url('https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=1600&auto=format&fit=crop') center/cover;
+padding:90px 20px;
+text-align:center;
+position:relative;
+}
 
-    .hero{
-      max-width:1200px;
-      margin:60px auto;
-      padding:20px;
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:40px;
-      align-items:center;
-    }
+.hero::before{
+content:'';
+position:absolute;
+inset:0;
+background:linear-gradient(rgba(255,145,0,.7),rgba(123,31,162,.8));
+}
 
-    .hero h1{
-      font-size:70px;
-      line-height:1.1;
-      font-family:'Orbitron',sans-serif;
-      margin-bottom:20px;
-      background:linear-gradient(45deg,#fff,#facc15,#9333ea);
-      -webkit-background-clip:text;
-      -webkit-text-fill-color:transparent;
-    }
+.hero-content{
+position:relative;
+z-index:2;
+color:white;
+}
 
-    .hero p{
-      color:#d1d5db;
-      line-height:1.8;
-      margin-bottom:25px;
-    }
+.hero h1{
+font-size:70px;
+font-weight:800;
+text-shadow:0 0 20px black;
+}
 
-    .banner{
-      background:linear-gradient(135deg,#7c3aed,#facc15);
-      padding:50px;
-      border-radius:30px;
-      box-shadow:0 0 40px rgba(124,58,237,0.5);
-    }
+.hero p{
+font-size:30px;
+font-weight:700;
+margin-top:15px;
+}
 
-    .banner h2{
-      font-size:40px;
-      margin-bottom:15px;
-      font-family:'Orbitron',sans-serif;
-    }
+.features{
+max-width:1200px;
+margin:-40px auto 0;
+padding:0 20px;
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:20px;
+position:relative;
+z-index:5;
+}
 
-    .games{
-      max-width:1200px;
-      margin:auto;
-      padding:20px;
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
-      gap:30px;
-    }
+.feature{
+background:#ffd600;
+padding:25px;
+border-radius:25px;
+text-align:center;
+box-shadow:0 10px 25px rgba(0,0,0,.15);
+}
 
-    .card{
-      background:rgba(255,255,255,0.05);
-      border:1px solid rgba(255,255,255,0.08);
-      border-radius:25px;
-      overflow:hidden;
-      backdrop-filter:blur(10px);
-      transition:0.3s;
-    }
+.feature h3{
+font-size:28px;
+margin-bottom:10px;
+}
 
-    .card:hover{
-      transform:translateY(-8px);
-      box-shadow:0 0 40px rgba(124,58,237,0.4);
-    }
+.feature p{
+font-weight:700;
+}
 
-    .card-header{
-      padding:25px;
-      background:linear-gradient(135deg,#7c3aed,#4c1d95);
-    }
+.section-title{
+text-align:center;
+font-size:55px;
+font-weight:800;
+margin:60px 0 40px;
+color:#311b92;
+}
 
-    .card-header h3{
-      font-size:30px;
-      font-family:'Orbitron',sans-serif;
-    }
+.games{
+max-width:1200px;
+margin:auto;
+padding:0 20px 50px;
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+gap:30px;
+}
 
-    .card-body{
-      padding:25px;
-    }
+.card{
+background:white;
+border-radius:35px;
+overflow:hidden;
+box-shadow:0 10px 30px rgba(0,0,0,.12);
+transition:.3s;
+cursor:pointer;
+}
 
-    input{
-      width:100%;
-      padding:14px;
-      border:none;
-      border-radius:14px;
-      background:#1f1635;
-      color:white;
-      margin-bottom:15px;
-      outline:none;
-    }
+.card:hover{
+transform:translateY(-8px);
+}
 
-    .package{
-      background:#12091f;
-      padding:18px;
-      border-radius:16px;
-      margin-bottom:14px;
-      border:1px solid rgba(255,255,255,0.08);
-      transition:0.3s;
-      cursor:pointer;
-    }
+.card img{
+width:100%;
+height:250px;
+object-fit:cover;
+}
 
-    .package:hover{
-      border-color:#facc15;
-      transform:scale(1.02);
-    }
+.card h2{
+padding:25px;
+font-size:40px;
+text-align:center;
+font-weight:800;
+}
 
-    .package strong{
-      font-size:24px;
-      color:#facc15;
-    }
+.ff{
+color:#ff5722;
+}
 
-    .buy-btn{
-      width:100%;
-      padding:15px;
-      border:none;
-      border-radius:16px;
-      margin-top:15px;
-      background:linear-gradient(45deg,#7c3aed,#facc15);
-      color:white;
-      font-size:16px;
-      font-weight:700;
-      cursor:pointer;
-    }
+.lq{
+color:#2196f3;
+}
 
-    .payment{
-      max-width:800px;
-      margin:70px auto;
-      padding:35px;
-      background:rgba(255,255,255,0.05);
-      border-radius:30px;
-      text-align:center;
-      border:1px solid rgba(255,255,255,0.08);
-    }
+.page{
+display:none;
+max-width:1200px;
+margin:40px auto;
+background:white;
+padding:35px;
+border-radius:35px;
+box-shadow:0 10px 30px rgba(0,0,0,.12);
+}
 
-    .payment h2{
-      font-size:40px;
-      color:#facc15;
-      margin-bottom:20px;
-      font-family:'Orbitron',sans-serif;
-    }
+.active{
+display:block;
+}
 
-    .qr-box{
-      width:280px;
-      background:white;
-      padding:15px;
-      border-radius:20px;
-      margin:25px auto;
-    }
+.back{
+background:black;
+color:white;
+border:none;
+padding:15px 30px;
+border-radius:18px;
+font-size:22px;
+font-weight:700;
+cursor:pointer;
+}
 
-    .qr-box img{
-      width:100%;
-    }
+.title{
+text-align:center;
+font-size:60px;
+font-weight:800;
+margin:25px 0;
+}
 
-    .bank{
-      line-height:2;
-      font-size:18px;
-    }
+.input{
+width:100%;
+padding:22px;
+border-radius:18px;
+border:1px solid #ddd;
+font-size:24px;
+}
 
-    .random{
-      color:#facc15;
-      font-size:22px;
-      font-weight:700;
-      margin-top:10px;
-    }
+.login{
+width:100%;
+margin-top:20px;
+padding:20px;
+border:none;
+border-radius:18px;
+background:linear-gradient(90deg,#ff5722,#ff9800);
+color:white;
+font-size:28px;
+font-weight:800;
+cursor:pointer;
+}
 
-    .floating{
-      position:fixed;
-      right:20px;
-      bottom:20px;
-      width:70px;
-      height:70px;
-      border-radius:50%;
-      background:#229ED9;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      font-size:32px;
-      color:white;
-      text-decoration:none;
-      box-shadow:0 0 25px rgba(34,158,217,0.6);
-    }
+.packages{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+gap:25px;
+margin-top:40px;
+}
 
-    footer{
-      text-align:center;
-      padding:35px;
-      color:#9ca3af;
-    }
+.package{
+background:#fafafa;
+padding:25px;
+border-radius:25px;
+text-align:center;
+box-shadow:0 5px 15px rgba(0,0,0,.08);
+transition:.3s;
+cursor:pointer;
+}
 
-    @media(max-width:900px){
+.package:hover{
+transform:translateY(-5px);
+}
 
-      .hero{
-        grid-template-columns:1fr;
-      }
+.package h3{
+font-size:38px;
+margin-bottom:15px;
+}
 
-      .hero h1{
-        font-size:42px;
-      }
+.amount{
+font-size:36px;
+font-weight:800;
+color:#00acc1;
+}
 
-    }
+.buy{
+margin-top:15px;
+background:#ff5722;
+color:white;
+border:none;
+padding:14px 24px;
+border-radius:15px;
+font-size:22px;
+font-weight:700;
+cursor:pointer;
+}
 
-  </style>
+.paybox{
+margin-top:50px;
+background:#fafafa;
+padding:35px;
+border-radius:30px;
+display:none;
+text-align:center;
+}
+
+.paybox.active{
+display:block;
+}
+
+.paybox h2{
+font-size:50px;
+margin-bottom:20px;
+}
+
+.qr{
+width:320px;
+max-width:100%;
+border-radius:25px;
+}
+
+.info{
+margin-top:20px;
+font-size:28px;
+font-weight:700;
+line-height:50px;
+}
+
+.telegram{
+position:fixed;
+left:15px;
+bottom:15px;
+background:#229ED9;
+padding:15px 20px;
+border-radius:50px;
+box-shadow:0 5px 20px rgba(0,0,0,.2);
+z-index:999;
+}
+
+.telegram a{
+color:white;
+text-decoration:none;
+font-weight:700;
+}
+
+footer{
+background:linear-gradient(90deg,#7b1fa2,#e91e63);
+padding:35px;
+text-align:center;
+color:white;
+font-weight:700;
+margin-top:60px;
+}
+
+@media(max-width:700px){
+
+.logo{
+font-size:22px;
+}
+
+.menu{
+display:none;
+}
+
+.hero h1{
+font-size:42px;
+}
+
+.hero p{
+font-size:22px;
+}
+
+.section-title{
+font-size:36px;
+}
+
+.card h2{
+font-size:28px;
+}
+
+.title{
+font-size:38px;
+}
+
+.input,
+.login{
+font-size:20px;
+}
+
+.package h3{
+font-size:28px;
+}
+
+.amount{
+font-size:28px;
+}
+
+.info{
+font-size:18px;
+line-height:35px;
+}
+
+}
+
+</style>
 </head>
+
 <body>
 
 <header>
 
-  <div class="nav">
+<div class="logo">
+NAPGAME247
+</div>
 
-    <div class="logo">
-      NAPGAME247
-    </div>
-
-    <a class="telegram-btn" href="https://t.me/ketamin28386" target="_blank">
-      CSKH TELEGRAM
-    </a>
-
-  </div>
+<div class="menu">
+<a href="#">HƯỚNG DẪN</a>
+<a href="#">KHUYẾN MÃI</a>
+<a href="#">BẢO HÀNH</a>
+<a href="https://t.me/ketamin28386" target="_blank">
+CSKH 24/7
+</a>
+</div>
 
 </header>
 
-<section class="hero">
+<div class="hero">
 
-  <div>
+<div class="hero-content">
 
-    <h1>SHOP NẠP GAME GIÁ RẺ</h1>
+<h1>SHOP NẠP GAME GIÁ RẺ</h1>
 
-    <p>
-      Hệ thống nạp game tự động giao diện gaming hiện đại.
-      Hỗ trợ Free Fire và Liên Quân Mobile.
-    </p>
+<p>Nhanh chóng • Uy tín • Hỗ trợ 24/7</p>
 
-    <a class="telegram-btn" href="https://t.me/ketamin28386" target="_blank">
-      LIÊN HỆ NGAY
-    </a>
+</div>
 
-  </div>
+</div>
 
-  <div class="banner">
+<div class="features">
 
-    <h2>NAPGAME247</h2>
+<div class="feature">
+<h3>🛡 BẢO HÀNH</h3>
+<p>AN TOÀN - UY TÍN</p>
+</div>
 
-    <p>
-      Nạp KC & Quân Huy siêu tốc.
-      Thanh toán QR VietQR tự động.
-    </p>
+<div class="feature">
+<h3>⚡ TIỆN LỢI</h3>
+<p>NHANH CHÓNG</p>
+</div>
 
-  </div>
+<div class="feature">
+<h3>🎧 HỖ TRỢ 24/7</h3>
+<p>TẬN TÂM - NHIỆT TÌNH</p>
+</div>
 
-</section>
+</div>
 
-<section class="games">
+<h1 class="section-title">
+CHỌN GAME NẠP
+</h1>
 
-  <div class="card">
+<div id="home" class="games">
 
-    <div class="card-header">
-      <h3>🔥 FREE FIRE</h3>
-    </div>
+<div class="card" onclick="openGame('ff')">
 
-    <div class="card-body">
+<img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=1200&auto=format&fit=crop">
 
-      <input type="text" placeholder="Nhập ID Free Fire">
+<h2 class="ff">
+🔥 FREE FIRE
+</h2>
 
-      <div class="package">
-        <strong>50K</strong>
-        <p>💎 14.150 KC</p>
-      </div>
+</div>
 
-      <div class="package">
-        <strong>100K</strong>
-        <p>💎 28.300 KC</p>
-      </div>
+<div class="card" onclick="openGame('lq')">
 
-      <div class="package">
-        <strong>200K</strong>
-        <p>💎 56.600 KC</p>
-      </div>
+<img src="https://images.unsplash.com/photo-1511512578047-dfb367046420?q=80&w=1200&auto=format&fit=crop">
 
-      <div class="package">
-        <strong>500K</strong>
-        <p>💎 169.800 KC</p>
-      </div>
+<h2 class="lq">
+⚔ LIÊN QUÂN MOBILE
+</h2>
 
-      <button class="buy-btn">
-        NẠP FREE FIRE
-      </button>
+</div>
 
-    </div>
+</div>
 
-  </div>
+<div id="page" class="page">
 
-  <div class="card">
+<button class="back" onclick="goHome()">
+← QUAY LẠI
+</button>
 
-    <div class="card-header">
-      <h3>⚔️ LIÊN QUÂN</h3>
-    </div>
+<h1 id="title" class="title"></h1>
 
-    <div class="card-body">
+<input
+id="uid"
+class="input"
+placeholder="Nhập ID game">
 
-      <input type="text" placeholder="Nhập ID Liên Quân">
+<button class="login" onclick="loginGame()">
+ĐĂNG NHẬP
+</button>
 
-      <div class="package">
-        <strong>50K</strong>
-        <p>⚡ 1.100 QH</p>
-      </div>
+<div id="packages" class="packages"></div>
 
-      <div class="package">
-        <strong>100K</strong>
-        <p>⚡ 2.600 QH</p>
-      </div>
+<div id="paybox" class="paybox">
 
-      <div class="package">
-        <strong>200K</strong>
-        <p>⚡ 6.000 QH</p>
-      </div>
+<h2>THANH TOÁN QR</h2>
 
-      <div class="package">
-        <strong>500K</strong>
-        <p>⚡ 20.000 QH</p>
-      </div>
+<img id="qr" class="qr">
 
-      <button class="buy-btn">
-        NẠP LIÊN QUÂN
-      </button>
+<div class="info">
 
-    </div>
+<div>Ngân hàng: VIB</div>
+<div>STK: 090958147</div>
+<div>Chủ TK: CAM MINH SON</div>
+<div>Nội dung CK: <span id="code"></span></div>
 
-  </div>
+</div>
 
-</section>
+</div>
 
-<section class="payment">
+</div>
 
-  <h2>THANH TOÁN QR</h2>
-
-  <div class="qr-box">
-    <img id="vietqr" src="">
-  </div>
-
-  <div class="bank">
-
-    <p><strong>Ngân hàng:</strong> VIB</p>
-    <p><strong>STK:</strong> 090958147</p>
-    <p><strong>Tên:</strong> CAM MINH SON</p>
-
-    <div class="random" id="randomCode"></div>
-
-  </div>
-
-</section>
+<div class="telegram">
+<a href="https://t.me/ketamin28386" target="_blank">
+📩 Hỗ trợ Telegram
+</a>
+</div>
 
 <footer>
-  © 2026 NAPGAME247
+Copyright © 2026 NapGame247
 </footer>
-
-<a class="floating" href="https://t.me/ketamin28386" target="_blank">
-  ✈
-</a>
 
 <script>
 
-  const code = 'NAP' + Math.floor(Math.random()*999999);
+let game='';
 
-  document.getElementById('randomCode').innerText =
-  'Nội dung CK: ' + code;
+const ff=[
+['50000','14.150 KC'],
+['100000','28.300 KC'],
+['200000','56.600 KC'],
+['500000','169.800 KC']
+];
 
-  const qr =
-  `https://img.vietqr.io/image/VIB-090958147-print.png?amount=0&addInfo=${code}&accountName=CAM%20MINH%20SON`;
+const lq=[
+['50000','1.100 QH'],
+['100000','2.600 QH'],
+['200000','6.000 QH'],
+['500000','20.000 QH']
+];
 
-  document.getElementById('vietqr').src = qr;
+function openGame(g){
+
+game=g;
+
+document.getElementById('home').style.display='none';
+
+document.getElementById('page').classList.add('active');
+
+document.getElementById('packages').innerHTML='';
+
+document.getElementById('paybox').classList.remove('active');
+
+document.getElementById('title').innerHTML=
+g==='ff'
+?
+'NẠP KC FREE FIRE'
+:
+'NẠP QUÂN HUY LIÊN QUÂN';
+
+window.scrollTo({
+top:0,
+behavior:'smooth'
+});
+
+}
+
+function goHome(){
+
+document.getElementById('home').style.display='grid';
+
+document.getElementById('page').classList.remove('active');
+
+}
+
+function loginGame(){
+
+const uid=document.getElementById('uid').value;
+
+if(uid===''){
+alert('Vui lòng nhập ID game');
+return;
+}
+
+const data=game==='ff'?ff:lq;
+
+let html='';
+
+data.forEach(item=>{
+
+html+=`
+
+<div class="package" onclick="pay('${item[0]}')">
+
+<h3>
+${Number(item[0]).toLocaleString('vi-VN')}đ
+</h3>
+
+<div class="amount">
+${item[1]}
+</div>
+
+<button class="buy">
+NẠP NGAY
+</button>
+
+</div>
+
+`;
+
+});
+
+document.getElementById('packages').innerHTML=html;
+
+}
+
+function pay(amount){
+
+const code='NAP'+Math.floor(Math.random()*999999);
+
+document.getElementById('code').innerHTML=code;
+
+const qr=
+`https://img.vietqr.io/image/VIB-090958147-compact2.png?amount=${amount}&addInfo=${code}&accountName=CAM%20MINH%20SON`;
+
+document.getElementById('qr').src=qr;
+
+document.getElementById('paybox').classList.add('active');
+
+window.scrollTo({
+top:document.body.scrollHeight,
+behavior:'smooth'
+});
+
+}
 
 </script>
 
