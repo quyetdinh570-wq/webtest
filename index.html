@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="vi">
+
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -183,9 +185,19 @@ margin-bottom:15px;
 }
 
 .amount{
+display:flex;
+justify-content:center;
+align-items:center;
+gap:10px;
 font-size:34px;
 font-weight:800;
 color:#00acc1;
+}
+
+.amount img{
+width:42px;
+height:42px;
+object-fit:contain;
 }
 
 .buy{
@@ -289,6 +301,7 @@ font-size:28px;
 }
 
 </style>
+
 </head>
 
 <body>
@@ -429,6 +442,13 @@ return;
 
 const data=game==='ff'?ff:lq;
 
+const icon=
+game==='ff'
+?
+'https://cdn-gop.garenanow.com/gop/app/0000/100/067/point.png'
+:
+'https://cdn-gop.garenanow.com/gop/app/0000/100/054/point.png';
+
 let html='';
 
 data.forEach(item=>{
@@ -442,7 +462,11 @@ ${Number(item[0]).toLocaleString('vi-VN')}đ
 </h3>
 
 <div class="amount">
+
+<img src="${icon}">
+
 ${item[1]}
+
 </div>
 
 <button class="buy"
