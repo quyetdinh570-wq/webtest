@@ -243,6 +243,15 @@ margin-bottom:15px;
 font-size:36px;
 font-weight:800;
 color:#00acc1;
+display:flex;
+justify-content:center;
+align-items:center;
+gap:10px;
+}
+
+.amount img{
+width:40px;
+height:40px;
 }
 
 .buy{
@@ -379,6 +388,7 @@ NAPGAME247
 <a href="#">HƯỚNG DẪN</a>
 <a href="#">KHUYẾN MÃI</a>
 <a href="#">BẢO HÀNH</a>
+
 <a href="https://t.me/ketamin28386" target="_blank">
 CSKH 24/7
 </a>
@@ -425,7 +435,7 @@ CHỌN GAME NẠP
 
 <div class="card" onclick="openGame('ff')">
 
-<img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=1200&auto=format&fit=crop">
+<img src="https://naplau.com/master-images/game/logo_ff.png">
 
 <h2 class="ff">
 🔥 FREE FIRE
@@ -435,7 +445,7 @@ CHỌN GAME NẠP
 
 <div class="card" onclick="openGame('lq')">
 
-<img src="https://images.unsplash.com/photo-1511512578047-dfb367046420?q=80&w=1200&auto=format&fit=crop">
+<img src="https://naplau.com/master-images/game/logo_lienquan.png">
 
 <h2 class="lq">
 ⚔ LIÊN QUÂN MOBILE
@@ -556,6 +566,13 @@ return;
 
 const data=game==='ff'?ff:lq;
 
+const icon=
+game==='ff'
+?
+'https://cdn-gop.garenanow.com/gop/app/0000/100/067/point.png'
+:
+'https://cdn-gop.garenanow.com/gop/app/0000/100/054/point.png';
+
 let html='';
 
 data.forEach(item=>{
@@ -569,7 +586,11 @@ ${Number(item[0]).toLocaleString('vi-VN')}đ
 </h3>
 
 <div class="amount">
+
+<img src="${icon}">
+
 ${item[1]}
+
 </div>
 
 <button class="buy">
