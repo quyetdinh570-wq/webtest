@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>TTKM OKVIP</title>
+<title>TTKM OKVIP Admin</title>
 
 <style>
 
@@ -15,373 +15,282 @@ font-family:'Segoe UI',sans-serif;
 }
 
 body{
-height:100vh;
+background:#071429;
+color:#fff;
 display:flex;
-justify-content:center;
-align-items:center;
-
-background:
-radial-gradient(circle at center,#123cff 0%,#04152f 70%);
-
+height:100vh;
 overflow:hidden;
 }
 
-body::before{
-content:"";
-position:absolute;
-inset:0;
+/* Sidebar */
 
-background:
-linear-gradient(rgba(0,153,255,.08) 1px,transparent 1px),
-linear-gradient(90deg,rgba(0,153,255,.08) 1px,transparent 1px);
-
-background-size:40px 40px;
+.sidebar{
+width:280px;
+background:#081a33;
+border-right:1px solid rgba(255,255,255,.08);
+overflow-y:auto;
 }
-
-.login-box{
-
-position:relative;
-z-index:2;
-
-width:460px;
-
-background:
-rgba(2,12,40,.95);
-
-border:1px solid rgba(0,180,255,.45);
-
-border-radius:30px;
-
-padding:35px;
-
-backdrop-filter:blur(15px);
-
-box-shadow:
-0 0 30px rgba(0,153,255,.25);
-}
-
-/* OKVIP */
 
 .logo{
-display:flex;
-justify-content:center;
-margin-bottom:15px;
+padding:25px;
+text-align:center;
+border-bottom:1px solid rgba(255,255,255,.08);
 }
 
-.okvip-logo{
-
-font-size:60px;
-font-weight:900;
-
+.logo h2{
+font-size:28px;
+color:#00bfff;
 }
 
-.ok{
-
-color:#ff9f1a;
-
-text-shadow:
-0 0 10px rgba(255,159,26,.6),
-0 0 25px rgba(255,159,26,.3);
-
+.group{
+padding:15px;
 }
 
-.vip{
-
-color:white;
-
-text-shadow:
-0 0 10px rgba(255,255,255,.3);
-
+.group-title{
+font-size:13px;
+color:#7fb7ff;
+font-weight:700;
+margin:15px 0 10px;
+text-transform:uppercase;
 }
 
-/* TTKM */
-
-.ttkm{
-
-display:flex;
-align-items:center;
-justify-content:center;
-gap:15px;
-
-color:#dbeafe;
-
-font-size:18px;
-
-font-weight:600;
-
-letter-spacing:6px;
-
-margin-bottom:20px;
-
+.menu-item{
+padding:12px 14px;
+border-radius:10px;
+margin-bottom:5px;
+cursor:pointer;
+transition:.3s;
 }
 
-.ttkm span{
-
-width:70px;
-height:2px;
-
-background:
-linear-gradient(
-90deg,
-transparent,
-#00bfff,
-transparent);
-
+.menu-item:hover{
+background:rgba(255,255,255,.05);
 }
 
-/* badge */
+.active{
+background:#4f5560;
+}
 
 .badge{
+float:right;
+background:#ff2f2f;
+padding:3px 8px;
+border-radius:20px;
+font-size:12px;
+}
 
+/* Main */
+
+.main{
+flex:1;
+overflow:auto;
+padding:25px;
+}
+
+.topbar{
 display:flex;
-justify-content:center;
+justify-content:space-between;
 align-items:center;
-
-padding:12px;
-
-border-radius:14px;
-
-border:1px solid rgba(0,180,255,.4);
-
-color:#31c5ff;
-
 margin-bottom:25px;
 }
 
-/* inputs */
-
-.input-group{
-margin-bottom:18px;
+.topbar h1{
+font-size:30px;
 }
 
-label{
-
-display:block;
-
-margin-bottom:8px;
-
-color:white;
-
-font-weight:600;
+.admin{
+padding:10px 15px;
+background:#10284d;
+border-radius:10px;
 }
 
-input{
-
-width:100%;
-
-padding:15px;
-
-border-radius:12px;
-
-border:1px solid rgba(0,153,255,.35);
-
-background:
-rgba(0,0,0,.25);
-
-color:white;
-
-font-size:15px;
+.cards{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:20px;
+margin-bottom:25px;
 }
 
-input:focus{
-
-outline:none;
-
-border-color:#00bfff;
-
-box-shadow:
-0 0 15px rgba(0,191,255,.25);
-}
-
-button{
-
-width:100%;
-
-padding:16px;
-
-border:none;
-
-border-radius:14px;
-
-font-size:22px;
-
-font-weight:800;
-
-cursor:pointer;
-
-color:white;
-
-background:
-linear-gradient(
-90deg,
-#1ea0ff,
-#2c4fff);
-
-margin-top:8px;
-}
-
-button:hover{
-
-filter:brightness(1.1);
-
-}
-
-.footer{
-
-text-align:center;
-
-margin-top:20px;
-
-color:#8ca7cb;
-
-font-size:13px;
-}
-
-/* trạng thái */
-
-.status{
-
-margin-top:20px;
-
-padding:12px;
-
-border-radius:12px;
-
-border:1px solid rgba(0,255,120,.35);
-
-display:flex;
-
-justify-content:center;
-align-items:center;
-gap:10px;
-
-color:#48ff91;
-}
-
-.dot{
-
-width:12px;
-height:12px;
-
-border-radius:50%;
-
-background:#48ff91;
-
-box-shadow:
-0 0 10px #48ff91;
-}
-
-/* success */
-
-.success{
-
-display:none;
-
-text-align:center;
-
+.card{
+background:#0d2345;
 padding:20px;
+border-radius:18px;
+border:1px solid rgba(0,191,255,.15);
 }
 
-.check{
-
-width:100px;
-height:100px;
-
-margin:0 auto 15px;
-
-border-radius:50%;
-
-background:#22c55e;
-
-display:flex;
-justify-content:center;
-align-items:center;
-
-font-size:60px;
-
-font-weight:bold;
-
-color:white;
-
-box-shadow:
-0 0 30px rgba(34,197,94,.5);
+.card h3{
+font-size:14px;
+color:#8ebeff;
+margin-bottom:10px;
 }
 
-.success h2{
-color:#22c55e;
+.card .number{
+font-size:34px;
+font-weight:800;
+color:#00bfff;
+}
+
+.table-box{
+background:#0d2345;
+border-radius:18px;
+padding:20px;
+border:1px solid rgba(0,191,255,.15);
+}
+
+.table-box h2{
+margin-bottom:15px;
+}
+
+table{
+width:100%;
+border-collapse:collapse;
+}
+
+th{
+background:#14345f;
+padding:12px;
+text-align:left;
+}
+
+td{
+padding:12px;
+border-top:1px solid rgba(255,255,255,.08);
+}
+
+.status-success{
+color:#37ff8b;
+font-weight:700;
+}
+
+.status-pending{
+color:#ffd54f;
+font-weight:700;
+}
+
+.status-reject{
+color:#ff6666;
+font-weight:700;
 }
 
 </style>
 </head>
-
 <body>
 
-<div class="login-box">
-
-<div id="form">
+<div class="sidebar">
 
 <div class="logo">
-<div class="okvip-logo">
-<span class="ok">OK</span><span class="vip">VIP</span>
-</div>
+<h2>ATT Admin</h2>
 </div>
 
-<div class="ttkm">
-<span></span>
-TTKM
-<span></span>
+<div class="group">
+
+<div class="group-title">Duyệt thủ công</div>
+
+<div class="menu-item active">
+Duyệt tài khoản
+<span class="badge">155</span>
 </div>
 
-<div class="badge">
-🛡 Hệ thống quản lý khuyến mãi
+<div class="menu-item">
+Kết quả xét duyệt
 </div>
 
-<div class="input-group">
-<label>TÀI KHOẢN</label>
-<input type="text" placeholder="Nhập tên đăng nhập">
-</div>
+<div class="group-title">Duyệt tự động</div>
 
-<div class="input-group">
-<label>MẬT KHẨU</label>
-<input type="password" placeholder="Nhập mật khẩu">
-</div>
+<div class="menu-item">Thành công</div>
+<div class="menu-item">Từ chối</div>
 
-<button onclick="login()">
-ĐĂNG NHẬP
-</button>
+<div class="group-title">Kiểm thử khuyến mãi</div>
 
-<div class="footer">
-© 2026 TTKM OKVIP
-</div>
+<div class="menu-item">Kiểm thử</div>
+<div class="menu-item">Code Voucher</div>
 
-<div class="status">
-<div class="dot"></div>
-Mã Lệnh Đang Được Hỗ Trợ Nha
-</div>
+<div class="group-title">Liên kết ngân hàng lỗi</div>
 
-</div>
+<div class="menu-item">Danh sách</div>
 
-<div id="success" class="success">
+<div class="group-title">Lạm dụng ATT</div>
 
-<div class="check">✓</div>
+<div class="menu-item">Data lạm dụng</div>
 
-<h2>Đăng nhập thành công</h2>
+<div class="group-title">Kiểm tra SMS</div>
+
+<div class="menu-item">Tin nhắn yêu cầu</div>
+<div class="menu-item">Tin nhắn đến APP</div>
 
 </div>
 
 </div>
 
-<script>
+<div class="main">
 
-function login(){
+<div class="topbar">
+<h1>TTKM OKVIP Dashboard</h1>
+<div class="admin">Admin</div>
+</div>
 
-document.getElementById("form").style.display="none";
+<div class="cards">
 
-document.getElementById("success").style.display="block";
+<div class="card">
+<h3>Tài khoản chờ duyệt</h3>
+<div class="number">155</div>
+</div>
 
-}
+<div class="card">
+<h3>Thành công hôm nay</h3>
+<div class="number">248</div>
+</div>
 
-</script>
+<div class="card">
+<h3>Từ chối hôm nay</h3>
+<div class="number">37</div>
+</div>
+
+<div class="card">
+<h3>Voucher hoạt động</h3>
+<div class="number">89</div>
+</div>
+
+</div>
+
+<div class="table-box">
+
+<h2>Danh sách tài khoản</h2>
+
+<table>
+
+<tr>
+<th>ID</th>
+<th>Tài khoản</th>
+<th>Trạng thái</th>
+<th>Ngày</th>
+</tr>
+
+<tr>
+<td>1001</td>
+<td>user001</td>
+<td class="status-pending">Chờ duyệt</td>
+<td>29/05/2026</td>
+</tr>
+
+<tr>
+<td>1002</td>
+<td>user002</td>
+<td class="status-success">Thành công</td>
+<td>29/05/2026</td>
+</tr>
+
+<tr>
+<td>1003</td>
+<td>user003</td>
+<td class="status-reject">Từ chối</td>
+<td>29/05/2026</td>
+</tr>
+
+</table>
+
+</div>
+
+</div>
 
 </body>
 </html>
