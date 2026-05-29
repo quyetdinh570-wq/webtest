@@ -19,147 +19,221 @@ height:100vh;
 display:flex;
 justify-content:center;
 align-items:center;
+
 background:
-radial-gradient(circle at center,#0f3fff 0%,#03142e 70%);
+radial-gradient(circle at center,#123cff 0%,#04152f 70%);
+
 overflow:hidden;
 }
-
-/* nền công nghệ */
 
 body::before{
 content:"";
 position:absolute;
 inset:0;
+
 background:
-linear-gradient(rgba(0,150,255,.08) 1px,transparent 1px),
-linear-gradient(90deg,rgba(0,150,255,.08) 1px,transparent 1px);
+linear-gradient(rgba(0,153,255,.08) 1px,transparent 1px),
+linear-gradient(90deg,rgba(0,153,255,.08) 1px,transparent 1px);
+
 background-size:40px 40px;
 }
 
-/* box */
-
 .login-box{
+
 position:relative;
 z-index:2;
 
 width:460px;
 
 background:
-rgba(5,15,40,.92);
+rgba(2,12,40,.95);
 
-border:1px solid rgba(0,180,255,.5);
+border:1px solid rgba(0,180,255,.45);
 
 border-radius:30px;
 
-padding:40px;
+padding:35px;
 
 backdrop-filter:blur(15px);
 
 box-shadow:
-0 0 30px rgba(0,140,255,.25);
+0 0 30px rgba(0,153,255,.25);
 }
 
-/* logo */
+/* OKVIP */
 
 .logo{
-text-align:center;
-margin-bottom:10px;
+display:flex;
+justify-content:center;
+margin-bottom:15px;
 }
 
-.logo img{
-width:220px;
-max-width:100%;
+.okvip-logo{
+
+font-size:60px;
+font-weight:900;
+
 }
 
-/* ttkm */
+.ok{
+
+color:#ff9f1a;
+
+text-shadow:
+0 0 10px rgba(255,159,26,.6),
+0 0 25px rgba(255,159,26,.3);
+
+}
+
+.vip{
+
+color:white;
+
+text-shadow:
+0 0 10px rgba(255,255,255,.3);
+
+}
+
+/* TTKM */
 
 .ttkm{
-text-align:center;
-color:white;
-font-size:28px;
-font-weight:700;
-letter-spacing:10px;
+
+display:flex;
+align-items:center;
+justify-content:center;
+gap:15px;
+
+color:#dbeafe;
+
+font-size:18px;
+
+font-weight:600;
+
+letter-spacing:6px;
+
 margin-bottom:20px;
-opacity:.95;
+
 }
 
+.ttkm span{
+
+width:70px;
+height:2px;
+
+background:
+linear-gradient(
+90deg,
+transparent,
+#00bfff,
+transparent);
+
+}
+
+/* badge */
+
 .badge{
+
 display:flex;
 justify-content:center;
 align-items:center;
-gap:8px;
 
 padding:12px;
 
-border:1px solid rgba(0,170,255,.4);
-
 border-radius:14px;
 
-color:#3bc7ff;
+border:1px solid rgba(0,180,255,.4);
+
+color:#31c5ff;
 
 margin-bottom:25px;
 }
 
-/* input */
-
-label{
-display:block;
-color:white;
-margin-bottom:8px;
-font-size:15px;
-font-weight:600;
-}
+/* inputs */
 
 .input-group{
 margin-bottom:18px;
 }
 
-input{
-width:100%;
-padding:16px;
-border-radius:12px;
-border:1px solid rgba(0,150,255,.35);
-background:rgba(0,0,0,.25);
+label{
+
+display:block;
+
+margin-bottom:8px;
+
 color:white;
+
+font-weight:600;
+}
+
+input{
+
+width:100%;
+
+padding:15px;
+
+border-radius:12px;
+
+border:1px solid rgba(0,153,255,.35);
+
+background:
+rgba(0,0,0,.25);
+
+color:white;
+
 font-size:15px;
 }
 
 input:focus{
+
 outline:none;
+
 border-color:#00bfff;
-box-shadow:0 0 15px rgba(0,191,255,.3);
+
+box-shadow:
+0 0 15px rgba(0,191,255,.25);
 }
 
 button{
+
 width:100%;
+
 padding:16px;
+
 border:none;
+
 border-radius:14px;
 
-background:
-linear-gradient(
-90deg,
-#0ea5ff,
-#1d4fff);
-
-color:white;
-
 font-size:22px;
+
 font-weight:800;
 
 cursor:pointer;
 
-margin-top:10px;
+color:white;
+
+background:
+linear-gradient(
+90deg,
+#1ea0ff,
+#2c4fff);
+
+margin-top:8px;
 }
 
 button:hover{
+
 filter:brightness(1.1);
+
 }
 
 .footer{
+
 text-align:center;
+
 margin-top:20px;
-color:#9db7d8;
+
+color:#8ca7cb;
+
 font-size:13px;
 }
 
@@ -167,37 +241,44 @@ font-size:13px;
 
 .status{
 
-margin-top:18px;
+margin-top:20px;
 
 padding:12px;
 
 border-radius:12px;
 
-text-align:center;
-
-color:#44ff88;
-
-border:1px solid rgba(68,255,136,.4);
+border:1px solid rgba(0,255,120,.35);
 
 display:flex;
+
 justify-content:center;
 align-items:center;
 gap:10px;
+
+color:#48ff91;
 }
 
 .dot{
+
 width:12px;
 height:12px;
+
 border-radius:50%;
-background:#44ff88;
-box-shadow:0 0 10px #44ff88;
+
+background:#48ff91;
+
+box-shadow:
+0 0 10px #48ff91;
 }
 
 /* success */
 
 .success{
+
 display:none;
+
 text-align:center;
+
 padding:20px;
 }
 
@@ -216,8 +297,10 @@ display:flex;
 justify-content:center;
 align-items:center;
 
-font-size:55px;
+font-size:60px;
+
 font-weight:bold;
+
 color:white;
 
 box-shadow:
@@ -235,14 +318,18 @@ color:#22c55e;
 
 <div class="login-box">
 
-<div id="loginForm">
+<div id="form">
 
 <div class="logo">
-<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/OK_symbol.svg/512px-OK_symbol.svg.png">
+<div class="okvip-logo">
+<span class="ok">OK</span><span class="vip">VIP</span>
+</div>
 </div>
 
 <div class="ttkm">
-T T K M
+<span></span>
+TTKM
+<span></span>
 </div>
 
 <div class="badge">
@@ -276,9 +363,7 @@ Mã Lệnh Đang Được Hỗ Trợ Nha
 
 <div id="success" class="success">
 
-<div class="check">
-✓
-</div>
+<div class="check">✓</div>
 
 <h2>Đăng nhập thành công</h2>
 
@@ -290,7 +375,7 @@ Mã Lệnh Đang Được Hỗ Trợ Nha
 
 function login(){
 
-document.getElementById("loginForm").style.display="none";
+document.getElementById("form").style.display="none";
 
 document.getElementById("success").style.display="block";
 
