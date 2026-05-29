@@ -1,118 +1,85 @@
-/* ===== GAMING NEON THEME ===== */
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NAPGAME247</title>
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
 
 body{
-background:#07010f;
-color:#fff;
-overflow-x:hidden;
-font-family:'Be Vietnam Pro',sans-serif;
-background-image:
-radial-gradient(circle at top,#7c3aed22 0%,transparent 40%),
-radial-gradient(circle at right,#06b6d422 0%,transparent 40%);
-}
-
-header{
-background:rgba(15,15,25,.8);
-backdrop-filter:blur(15px);
-border-bottom:1px solid rgba(255,255,255,.1);
-}
-
-.logo{
-font-size:34px;
-font-weight:800;
-color:#fff;
-text-shadow:
-0 0 10px #7c3aed,
-0 0 25px #7c3aed;
-}
-
-.hero{
-min-height:420px;
+background:#0a0615;
+color:white;
+min-height:100vh;
 display:flex;
-align-items:center;
 justify-content:center;
+align-items:center;
 }
 
-.hero::before{
-background:
-linear-gradient(
-135deg,
-rgba(124,58,237,.75),
-rgba(255,102,0,.65)
-);
-}
-
-.hero h1{
-font-size:72px;
-text-shadow:
-0 0 15px #7c3aed,
-0 0 30px #ff6600;
-}
-
-.games{
-gap:30px;
-}
-
-.card{
-background:#120624;
+.box{
+width:90%;
+max-width:700px;
+padding:40px;
+border-radius:25px;
+background:#151025;
 border:1px solid #7c3aed;
-box-shadow:
-0 0 25px rgba(124,58,237,.4);
-transition:.35s;
+box-shadow:0 0 30px rgba(124,58,237,.5);
+text-align:center;
 }
 
-.card:hover{
-transform:translateY(-12px) scale(1.03);
-box-shadow:
-0 0 25px #7c3aed,
-0 0 50px #ff6600;
+h1{
+font-size:48px;
+margin-bottom:20px;
 }
 
-.page{
-background:rgba(20,10,40,.75);
-backdrop-filter:blur(18px);
-border:1px solid rgba(124,58,237,.45);
+p{
+font-size:20px;
+margin-bottom:25px;
 }
 
-.input{
-background:#1a1030;
+input{
+width:100%;
+padding:15px;
+border:none;
+border-radius:12px;
+margin-bottom:15px;
+font-size:18px;
+}
+
+button{
+padding:15px 25px;
+border:none;
+border-radius:12px;
+font-size:18px;
+cursor:pointer;
+background:linear-gradient(90deg,#7c3aed,#ff6600);
 color:white;
-border:1px solid #7c3aed;
+font-weight:bold;
 }
 
-.input::placeholder{
-color:#cfcfcf;
+button:hover{
+transform:scale(1.05);
 }
+</style>
+</head>
+<body>
 
-.login,
-.buy{
-background:
-linear-gradient(
-90deg,
-#7c3aed,
-#ff6600
-);
-color:white;
-font-weight:800;
-box-shadow:
-0 0 15px rgba(124,58,237,.7);
-}
+<div class="box">
+<h1>NAPGAME247</h1>
+<p>Demo giao diện hoạt động</p>
 
-.package{
-background:#14091f;
-border:1px solid #9333ea;
-box-shadow:
-0 0 20px rgba(147,51,234,.35);
-}
+<input placeholder="Nhập ID game">
 
-.package:hover{
-transform:translateY(-8px);
-}
+<button onclick="alert('Website đang hoạt động!')">
+ĐĂNG NHẬP
+</button>
+</div>
 
-footer{
-background:
-linear-gradient(
-90deg,
-#7c3aed,
-#ff6600
-);
-}
+</body>
+</html>
