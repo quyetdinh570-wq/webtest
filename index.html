@@ -1,39 +1,387 @@
-
 <!DOCTYPE html>
 <html lang="vi">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>TTKM OKVIP</title>
+
 <style>
-body{
+
+*{
 margin:0;
-font-family:Segoe UI,sans-serif;
-background:radial-gradient(circle,#1d4ed8 0%,#071a3a 45%,#020617 100%);
+padding:0;
+box-sizing:border-box;
+font-family:'Segoe UI',sans-serif;
 }
+
+body{
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+
+background:
+radial-gradient(circle at center,#123cff 0%,#04152f 70%);
+
+overflow:hidden;
+}
+
+body::before{
+content:"";
+position:absolute;
+inset:0;
+
+background:
+linear-gradient(rgba(0,153,255,.08) 1px,transparent 1px),
+linear-gradient(90deg,rgba(0,153,255,.08) 1px,transparent 1px);
+
+background-size:40px 40px;
+}
+
+.login-box{
+
+position:relative;
+z-index:2;
+
+width:460px;
+
+background:
+rgba(2,12,40,.95);
+
+border:1px solid rgba(0,180,255,.45);
+
+border-radius:30px;
+
+padding:35px;
+
+backdrop-filter:blur(15px);
+
+box-shadow:
+0 0 30px rgba(0,153,255,.25);
+}
+
+/* OKVIP */
+
+.logo{
+display:flex;
+justify-content:center;
+margin-bottom:15px;
+}
+
+.okvip-logo{
+
+font-size:60px;
+font-weight:900;
+
+}
+
+.ok{
+
+color:#ff9f1a;
+
+text-shadow:
+0 0 10px rgba(255,159,26,.6),
+0 0 25px rgba(255,159,26,.3);
+
+}
+
+.vip{
+
+color:white;
+
+text-shadow:
+0 0 10px rgba(255,255,255,.3);
+
+}
+
+/* TTKM */
+
+.ttkm{
+
+display:flex;
+align-items:center;
+justify-content:center;
+gap:15px;
+
+color:#dbeafe;
+
+font-size:18px;
+
+font-weight:600;
+
+letter-spacing:6px;
+
+margin-bottom:20px;
+
+}
+
+.ttkm span{
+
+width:70px;
+height:2px;
+
+background:
+linear-gradient(
+90deg,
+transparent,
+#00bfff,
+transparent);
+
+}
+
+/* badge */
+
+.badge{
+
+display:flex;
+justify-content:center;
+align-items:center;
+
+padding:12px;
+
+border-radius:14px;
+
+border:1px solid rgba(0,180,255,.4);
+
+color:#31c5ff;
+
+margin-bottom:25px;
+}
+
+/* inputs */
+
+.input-group{
+margin-bottom:18px;
+}
+
+label{
+
+display:block;
+
+margin-bottom:8px;
+
+color:white;
+
+font-weight:600;
+}
+
+input{
+
+width:100%;
+
+padding:15px;
+
+border-radius:12px;
+
+border:1px solid rgba(0,153,255,.35);
+
+background:
+rgba(0,0,0,.25);
+
+color:white;
+
+font-size:15px;
+}
+
+input:focus{
+
+outline:none;
+
+border-color:#00bfff;
+
+box-shadow:
+0 0 15px rgba(0,191,255,.25);
+}
+
+button{
+
+width:100%;
+
+padding:16px;
+
+border:none;
+
+border-radius:14px;
+
+font-size:22px;
+
+font-weight:800;
+
+cursor:pointer;
+
+color:white;
+
+background:
+linear-gradient(
+90deg,
+#1ea0ff,
+#2c4fff);
+
+margin-top:8px;
+}
+
+button:hover{
+
+filter:brightness(1.1);
+
+}
+
+.footer{
+
+text-align:center;
+
+margin-top:20px;
+
+color:#8ca7cb;
+
+font-size:13px;
+}
+
+/* trạng thái */
+
+.status{
+
+margin-top:20px;
+
+padding:12px;
+
+border-radius:12px;
+
+border:1px solid rgba(0,255,120,.35);
+
+display:flex;
+
+justify-content:center;
+align-items:center;
+gap:10px;
+
+color:#48ff91;
+}
+
+.dot{
+
+width:12px;
+height:12px;
+
+border-radius:50%;
+
+background:#48ff91;
+
+box-shadow:
+0 0 10px #48ff91;
+}
+
+/* success */
+
+.success{
+
+display:none;
+
+text-align:center;
+
+padding:20px;
+}
+
+.check{
+
+width:100px;
+height:100px;
+
+margin:0 auto 15px;
+
+border-radius:50%;
+
+background:#22c55e;
+
+display:flex;
+justify-content:center;
+align-items:center;
+
+font-size:60px;
+
+font-weight:bold;
+
+color:white;
+
+box-shadow:
+0 0 30px rgba(34,197,94,.5);
+}
+
+.success h2{
+color:#22c55e;
+}
+
 </style>
 </head>
+
 <body>
-<!-- Login Page -->
-<div id="loginPage">
-<h1>OKVIP</h1>
-<p>TTKM</p>
-<input placeholder="Tài khoản">
-<input placeholder="Mật khẩu" type="password">
-<button onclick="login()">ĐĂNG NHẬP</button>
+
+<div class="login-box">
+
+<div id="form">
+
+<div class="logo">
+<div class="okvip-logo">
+<span class="ok">OK</span><span class="vip">VIP</span>
+</div>
 </div>
 
-<!-- Dashboard -->
-<div id="dashboard" style="display:none">
-<h2>TTKM OKVIP Dashboard</h2>
-<p>Duyệt tài khoản | Kết quả xét duyệt | Voucher</p>
+<div class="ttkm">
+<span></span>
+TTKM
+<span></span>
+</div>
+
+<div class="badge">
+🛡 Hệ thống quản lý khuyến mãi
+</div>
+
+<div class="input-group">
+<label>TÀI KHOẢN</label>
+<input type="text" placeholder="Nhập tên đăng nhập">
+</div>
+
+<div class="input-group">
+<label>MẬT KHẨU</label>
+<input type="password" placeholder="Nhập mật khẩu">
+</div>
+
+<button onclick="login()">
+ĐĂNG NHẬP
+</button>
+
+<div class="footer">
+© 2026 TTKM OKVIP
+</div>
+
+<div class="status">
+<div class="dot"></div>
+Mã Lệnh Đang Được Hỗ Trợ Nha
+</div>
+
+</div>
+
+<div id="success" class="success">
+
+<div class="check">✓</div>
+
+<h2>Đăng nhập thành công</h2>
+
+</div>
+
 </div>
 
 <script>
+
 function login(){
- alert('Đăng nhập thành công');
- document.getElementById('loginPage').style.display='none';
- document.getElementById('dashboard').style.display='block';
+
+document.getElementById("form").style.display="none";
+
+document.getElementById("success").style.display="block";
+
 }
+
 </script>
+
 </body>
 </html>
