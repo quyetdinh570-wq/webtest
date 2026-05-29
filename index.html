@@ -1,40 +1,396 @@
-<div id="dashboard" style="display:none">
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TTKM OKVIP</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Segoe UI',sans-serif;
+}
+
+/* LOGIN */
+
+body{
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+background:radial-gradient(circle at center,#123cff 0%,#04152f 70%);
+overflow:hidden;
+}
+
+body::before{
+content:"";
+position:absolute;
+inset:0;
+background:
+linear-gradient(rgba(0,153,255,.08) 1px,transparent 1px),
+linear-gradient(90deg,rgba(0,153,255,.08) 1px,transparent 1px);
+background-size:40px 40px;
+}
+
+.login-box{
+position:relative;
+z-index:2;
+width:460px;
+background:rgba(2,12,40,.95);
+border:1px solid rgba(0,180,255,.45);
+border-radius:30px;
+padding:35px;
+backdrop-filter:blur(15px);
+box-shadow:0 0 30px rgba(0,153,255,.25);
+}
+
+.logo{
+display:flex;
+justify-content:center;
+margin-bottom:15px;
+}
+
+.okvip-logo{
+font-size:60px;
+font-weight:900;
+}
+
+.ok{
+color:#ff9f1a;
+}
+
+.vip{
+color:#fff;
+}
+
+.ttkm{
+display:flex;
+align-items:center;
+justify-content:center;
+gap:15px;
+color:#dbeafe;
+font-size:18px;
+font-weight:600;
+letter-spacing:6px;
+margin-bottom:20px;
+}
+
+.ttkm span{
+width:70px;
+height:2px;
+background:linear-gradient(90deg,transparent,#00bfff,transparent);
+}
+
+.badge{
+display:flex;
+justify-content:center;
+align-items:center;
+padding:12px;
+border-radius:14px;
+border:1px solid rgba(0,180,255,.4);
+color:#31c5ff;
+margin-bottom:25px;
+}
+
+.input-group{
+margin-bottom:18px;
+}
+
+label{
+display:block;
+margin-bottom:8px;
+color:white;
+font-weight:600;
+}
+
+input{
+width:100%;
+padding:15px;
+border-radius:12px;
+border:1px solid rgba(0,153,255,.35);
+background:rgba(0,0,0,.25);
+color:white;
+font-size:15px;
+}
+
+button{
+width:100%;
+padding:16px;
+border:none;
+border-radius:14px;
+font-size:22px;
+font-weight:800;
+cursor:pointer;
+color:white;
+background:linear-gradient(90deg,#1ea0ff,#2c4fff);
+margin-top:8px;
+}
+
+.footer{
+text-align:center;
+margin-top:20px;
+color:#8ca7cb;
+font-size:13px;
+}
+
+.status{
+margin-top:20px;
+padding:12px;
+border-radius:12px;
+border:1px solid rgba(0,255,120,.35);
+display:flex;
+justify-content:center;
+align-items:center;
+gap:10px;
+color:#48ff91;
+}
+
+.dot{
+width:12px;
+height:12px;
+border-radius:50%;
+background:#48ff91;
+}
+
+/* DASHBOARD */
+
+#dashboard{
+display:none;
+width:100vw;
+height:100vh;
+background:#f4f6fb;
+}
+
+.sidebar{
+width:260px;
+background:white;
+height:100vh;
+padding:20px;
+border-right:1px solid #ddd;
+}
+
+.sidebar h2{
+color:#2563eb;
+margin-bottom:20px;
+}
+
+.sidebar ul{
+list-style:none;
+}
+
+.sidebar li{
+padding:12px;
+margin-bottom:10px;
+background:#eef2ff;
+border-radius:10px;
+cursor:pointer;
+}
+
+.content{
+flex:1;
+padding:30px;
+overflow:auto;
+}
+
+.header{
+background:white;
+padding:20px;
+border-radius:12px;
+margin-bottom:20px;
+box-shadow:0 2px 10px rgba(0,0,0,.05);
+}
+
+.header h1{
+font-size:24px;
+}
+
+.stats{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:15px;
+margin-bottom:20px;
+}
+
+.card{
+background:white;
+padding:20px;
+border-radius:12px;
+box-shadow:0 2px 10px rgba(0,0,0,.05);
+}
+
+.card h3{
+color:#666;
+margin-bottom:10px;
+}
+
+.card p{
+font-size:28px;
+font-weight:bold;
+color:#2563eb;
+}
+
+table{
+width:100%;
+border-collapse:collapse;
+background:white;
+border-radius:12px;
+overflow:hidden;
+}
+
+th{
+background:#2563eb;
+color:white;
+padding:15px;
+}
+
+td{
+padding:15px;
+border-bottom:1px solid #eee;
+}
+
+.approved{
+color:green;
+font-weight:bold;
+}
+
+.pending{
+color:orange;
+font-weight:bold;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="login-box" id="loginBox">
+
+<div class="logo">
+<div class="okvip-logo">
+<span class="ok">OK</span><span class="vip">VIP</span>
+</div>
+</div>
+
+<div class="ttkm">
+<span></span>
+TTKM
+<span></span>
+</div>
+
+<div class="badge">
+🛡 Hệ thống quản lý khuyến mãi
+</div>
+
+<div class="input-group">
+<label>TÀI KHOẢN</label>
+<input type="text" placeholder="Nhập tên đăng nhập">
+</div>
+
+<div class="input-group">
+<label>MẬT KHẨU</label>
+<input type="password" placeholder="Nhập mật khẩu">
+</div>
+
+<button onclick="login()">
+ĐĂNG NHẬP
+</button>
+
+<div class="footer">
+© 2026 TTKM OKVIP
+</div>
+
+<div class="status">
+<div class="dot"></div>
+Hệ Thống Đang Hoạt Động
+</div>
+
+</div>
+
+<div id="dashboard">
 
 <div class="sidebar">
-    <h2>TTKM</h2>
-    <ul>
-        <li>Duyệt tài khoản</li>
-        <li>Kết quả xét duyệt</li>
-        <li>Khuyến mãi</li>
-        <li>Ngân hàng</li>
-        <li>Cài đặt</li>
-    </ul>
+
+<h2>TTKM ADMIN</h2>
+
+<ul>
+<li>Duyệt tài khoản</li>
+<li>Kết quả xét duyệt</li>
+<li>Khuyến mãi</li>
+<li>Ngân hàng</li>
+<li>Báo cáo</li>
+<li>Cài đặt</li>
+</ul>
+
 </div>
 
 <div class="content">
 
+<div class="header">
 <h1>Duyệt tài khoản khách đăng ký</h1>
+</div>
+
+<div class="stats">
+
+<div class="card">
+<h3>Tổng tài khoản</h3>
+<p>152</p>
+</div>
+
+<div class="card">
+<h3>Đã duyệt</h3>
+<p>128</p>
+</div>
+
+<div class="card">
+<h3>Chờ duyệt</h3>
+<p>24</p>
+</div>
+
+</div>
 
 <table>
+
 <tr>
 <th>ID</th>
 <th>Tài khoản</th>
-<th>Trạng thái</th>
 <th>Ngân hàng</th>
+<th>Điểm</th>
+<th>Trạng thái</th>
 </tr>
 
 <tr>
 <td>1</td>
 <td>user001</td>
-<td>Đã duyệt</td>
 <td>TPBank</td>
+<td>5.000</td>
+<td class="approved">Đã duyệt</td>
 </tr>
 
 <tr>
 <td>2</td>
 <td>user002</td>
-<td>Chờ duyệt</td>
-<td>MB</td>
+<td>MB Bank</td>
+<td>8.000</td>
+<td class="pending">Chờ duyệt</td>
+</tr>
+
+<tr>
+<td>3</td>
+<td>user003</td>
+<td>Vietcombank</td>
+<td>12.000</td>
+<td class="approved">Đã duyệt</td>
+</tr>
+
+<tr>
+<td>4</td>
+<td>user004</td>
+<td>BIDV</td>
+<td>3.000</td>
+<td class="pending">Chờ duyệt</td>
 </tr>
 
 </table>
@@ -42,3 +398,22 @@
 </div>
 
 </div>
+
+<script>
+
+function login(){
+
+document.getElementById("loginBox").style.display="none";
+
+document.body.style.display="block";
+document.body.style.background="#f4f6fb";
+document.body.style.overflow="auto";
+
+document.getElementById("dashboard").style.display="flex";
+
+}
+
+</script>
+
+</body>
+</html>
