@@ -10,51 +10,71 @@
     margin:0;
     padding:0;
     box-sizing:border-box;
+    font-family:'Segoe UI',sans-serif;
 }
 
 body{
-    font-family:'Segoe UI',sans-serif;
     min-height:100vh;
     display:flex;
     justify-content:center;
     align-items:center;
     background:linear-gradient(
         135deg,
-        #081224 0%,
-        #13284c 50%,
-        #2f58b8 100%
+        #06142b 0%,
+        #10284d 50%,
+        #2954c8 100%
     );
 }
 
-.login-box{
+.container{
     width:430px;
     background:#fff;
-    border-radius:25px;
+    border-radius:30px;
     padding:40px;
-    box-shadow:0 20px 50px rgba(0,0,0,.25);
+    box-shadow:0 25px 60px rgba(0,0,0,.25);
 }
 
 .logo{
     width:110px;
     height:110px;
-    margin:0 auto 15px;
+    margin:auto;
+    border-radius:50%;
+    background:linear-gradient(135deg,#2563eb,#06b6d4);
     display:flex;
     align-items:center;
     justify-content:center;
+    box-shadow:0 10px 25px rgba(37,99,235,.35);
 }
 
-.logo img{
-    width:100%;
-    height:100%;
-    object-fit:contain;
+.logo span{
+    color:white;
+    font-size:32px;
+    font-weight:900;
+    letter-spacing:2px;
 }
 
-h1{
+.brand{
     text-align:center;
-    color:#0f172a;
-    font-size:42px;
-    font-weight:800;
+    margin-top:20px;
     margin-bottom:15px;
+    font-size:46px;
+    font-weight:900;
+    letter-spacing:2px;
+    text-transform:uppercase;
+}
+
+.brand .ttkm{
+    color:#0f172a;
+}
+
+.brand .okvip{
+    background:linear-gradient(
+        90deg,
+        #2563eb,
+        #06b6d4
+    );
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
 }
 
 .badge{
@@ -69,106 +89,93 @@ h1{
     margin-bottom:30px;
 }
 
-.label{
+label{
     display:block;
-    font-weight:600;
-    color:#334155;
+    font-weight:700;
     margin-bottom:8px;
+    color:#334155;
 }
 
-.input{
+input{
     width:100%;
     padding:15px;
     border:1px solid #cbd5e1;
     border-radius:12px;
-    margin-bottom:20px;
     font-size:15px;
-    transition:.3s;
+    margin-bottom:20px;
 }
 
-.input:focus{
+input:focus{
     outline:none;
     border-color:#2563eb;
     box-shadow:0 0 0 4px rgba(37,99,235,.15);
 }
 
-.btn{
+button{
     width:100%;
-    border:none;
     padding:16px;
+    border:none;
     border-radius:12px;
-    font-size:18px;
-    font-weight:700;
-    color:white;
-    cursor:pointer;
     background:linear-gradient(
         90deg,
         #2563eb,
         #06b6d4
     );
+    color:white;
+    font-size:18px;
+    font-weight:800;
+    cursor:pointer;
+    transition:.3s;
 }
 
-.btn:hover{
-    opacity:.95;
+button:hover{
+    transform:translateY(-2px);
 }
 
 .footer{
+    margin-top:25px;
     text-align:center;
     color:#64748b;
     font-size:13px;
-    margin-top:25px;
 }
 
 @media(max-width:500px){
-    .login-box{
+    .container{
         width:92%;
         padding:30px;
     }
 
-    h1{
-        font-size:34px;
+    .brand{
+        font-size:36px;
     }
 }
 </style>
-</head>
 
+</head>
 <body>
 
-<div class="login-box">
+<div class="container">
 
     <div class="logo">
-        <img src="data:image/png;base64,YOUR_BASE64_LOGO_HERE">
+        <span>OK</span>
     </div>
 
-    <h1>TTKM OKVIP</h1>
+    <div class="brand">
+        <span class="ttkm">TTKM</span>
+        <span class="okvip">OKVIP</span>
+    </div>
 
-    <span class="badge">
+    <div class="badge">
         Hệ thống quản lý khuyến mãi
-    </span>
+    </div>
 
-    <label class="label">
-        Tài khoản
-    </label>
+    <label>Tài khoản</label>
+    <input type="text" placeholder="Nhập tên đăng nhập">
 
-    <input
-        class="input"
-        type="text"
-        placeholder="Nhập tên đăng nhập"
-    >
+    <label>Mật khẩu</label>
+    <input type="password" placeholder="Nhập mật khẩu">
 
-    <label class="label">
-        Mật khẩu
-    </label>
-
-    <input
-        class="input"
-        type="password"
-        placeholder="Nhập mật khẩu"
-    >
-
-    <button class="btn">
-        ĐĂNG NHẬP
-    </button>
+    <button>ĐĂNG NHẬP</button>
 
     <div class="footer">
         © 2026 TTKM OKVIP<br>
