@@ -1,6 +1,5 @@
-# File index.html hoàn chỉnh
 
-```html
+
 <!DOCTYPE html>
 <html lang="vi">
 <head>
@@ -361,6 +360,25 @@ title:'Chưa nhập ID game'
 return;
 }
 
+if(uid.length <= 7){
+
+Swal.fire({
+icon:'error',
+title:'❌ ID Không Tồn Tại',
+text:'Vui lòng kiểm tra lại ID game',
+confirmButtonColor:'#e53935'
+});
+
+document.getElementById('packages').innerHTML='';
+return;
+}
+
+Swal.fire({
+icon:'success',
+title:'✅ Đăng Nhập Thành Công',
+confirmButtonColor:'#22c55e'
+});
+
 const data=game==='ff'?ff:lq;
 
 const icon=game==='ff'
@@ -520,4 +538,3 @@ text:'Admin sẽ kiểm tra giao dịch'
 </html>
 ```
 
-Xóa hết code cũ rồi dán nguyên file này vào `index.html` là chạy.
